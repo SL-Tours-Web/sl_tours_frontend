@@ -82,16 +82,67 @@ const App = () => {
       </section>
 
       {/* Footer Section */}
-      <footer className="footer">
-        <div className="footer-content">
-          <p>© 2025 Walkers Tours</p>
-          <div className="social-links">
-            <a href="#">Facebook</a>
-            <a href="#">Instagram</a>
-            <a href="#">LinkedIn</a>
-          </div>
-        </div>
-      </footer>
+<footer className="footer">
+  <div className="footer-content">
+    <div className="footer-left">
+      <h4>Walkers Tours Limited</h4>
+      <p>Address: No 117, Sir Chittampalam A Gardiner Mawatha, Colombo O2, Sri Lanka.</p>
+      <p>Phone: +94 76 8511 264</p>
+      <p>Email: <a href="mailto:info@walkerstours.com">info@walkerstours.com</a></p>
+    </div>
+
+    <div className="footer-links">
+      <h5>Quick Links</h5>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Sri Lanka Tours</a></li>
+        <li><a href="#">Maldives Tours</a></li>
+        <li><a href="#">Excursions</a></li>
+        <li><a href="#">MICE</a></li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Sustainability</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Contact Us</a></li>
+      </ul>
+    </div>
+
+    <div className="footer-newsletter">
+      <h5>Newsletter</h5>
+      <input type="email" placeholder="Enter your email address" />
+      <button>Subscribe</button>
+    </div>
+
+    <div className="footer-payment">
+      <h5>Our Payment Partners</h5>
+      <div className="payment-icons">
+        <img src="path-to-visa-logo.png" alt="Visa" />
+        <img src="path-to-mastercard-logo.png" alt="Mastercard" />
+        <img src="path-to-safekey-logo.png" alt="SafeKey" />
+        <img src="path-to-umapay-logo.png" alt="UMapay" />
+      </div>
+    </div>
+
+    <div className="footer-social">
+      <h5>Follow Us</h5>
+      <div className="social-icons">
+        <a href="#">Facebook</a>
+        <a href="#">Instagram</a>
+        <a href="#">LinkedIn</a>
+      </div>
+    </div>
+
+    <div className="footer-bottom">
+      <p>© 2025 Walkers Tours Limited. All rights reserved.</p>
+      <div className="footer-legal">
+        <a href="#">Terms & Conditions</a> | 
+        <a href="#">Privacy Policy</a> | 
+        <a href="#">GDPR</a> | 
+        <a href="#">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
     </div>
   );
 };
