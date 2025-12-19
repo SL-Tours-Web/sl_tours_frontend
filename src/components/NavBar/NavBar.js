@@ -1,91 +1,42 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom"; // Import Link from react-router-dom
-import "./NavBar.css";
+import React, { useState } from 'react';
+import './NavBar.css';
 
-const Navbar = () => {
-  const [isToursOpen, setToursOpen] = useState(false);
-  const [isEventsOpen, setEventsOpen] = useState(false);
-  const [isMenuOpen, setMenuOpen] = useState(false); // Hamburger toggle
+const NavBar = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
 
   return (
-    <nav className="navbar">
-      {/* LOGO */}
-      <div className="nav-left">
-        <img src="/logo.png" alt="Classic Lanka Logo" className="nav-logo" />
+    <header className="navbar">
+      <div className="logo">
+        <a href="/">Walkers Tours</a>
       </div>
-
-      {/* HAMBURGER */}
-      <div
-        className={`hamburger ${isMenuOpen ? "open" : ""}`}
-        onClick={() => setMenuOpen(!isMenuOpen)}
-      >
-        <div></div>
-        <div></div>
-        <div></div>
+      <nav className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#sri-lanka-tours">Sri Lanka Tours</a></li>
+          <li><a href="#maldives-tours">Maldives Tours</a></li>
+          <li><a href="#sustainability">Sustainability</a></li>
+          <li><a href="#mice">MICE</a></li>
+          <li><a href="#partner-up">Partner Up</a></li>
+          <li><a href="#specialized-brands">Specialized Brands</a></li>
+        </ul>
+      </nav>
+      <div className="nav-icons">
+        <button className="search-icon">
+          <i className="fas fa-search"></i>
+        </button>
+        <button className="inquire-button">
+          <i className="fas fa-comment"></i> Inquire
+        </button>
+        <button className="menu-icon" onClick={toggleMenu}>
+          <i className="fas fa-bars"></i>
+        </button>
       </div>
-
-      {/* MENU ITEMS */}
-      <ul className={`nav-menu ${isMenuOpen ? "active" : ""}`}>
-        <li className="nav-item active">
-          <Link to="/">Home</Link> {/* Link to Home */}
-        </li>
-        <li className="nav-item">
-          <Link to="/about">About</Link> {/* Link to About */}
-        </li>
-
-        {/* TOURS DROPDOWN */}
-        <li
-          className="nav-item dropdown"
-          onMouseEnter={() => setToursOpen(true)}
-          onMouseLeave={() => setToursOpen(false)}
-          onClick={() => setToursOpen(!isToursOpen)} // For mobile tap
-        >
-          Tours ▾
-          {isToursOpen && (
-            <div className="dropdown-menu">
-              <p>Sri Lanka Tours</p>
-              <p>Holiday Packages</p>
-              <p>Adventure Tours</p>
-            </div>
-          )}
-        </li>
-
-        
-        <li className="nav-item">
-          <Link to="/medical-tours">Medical Tours</Link> {/* Link to Medical Tours */}
-        </li>
-
-        {/* EVENTS DROPDOWN */}
-        <li
-          className="nav-item dropdown"
-          onMouseEnter={() => setEventsOpen(true)}
-          onMouseLeave={() => setEventsOpen(false)}
-          onClick={() => setEventsOpen(!isEventsOpen)} // For mobile tap
-        >
-          Events ▾
-          {isEventsOpen && (
-            <div className="dropdown-menu">
-              <p>Wedding Events</p>
-              <p>Corporate Events</p>
-              <p>Cultural Events</p>
-            </div>
-          )}
-        </li>
-
-        <li className="nav-item">
-          <Link to="/gallery">Gallery</Link> {/* Link to Gallery */}
-        </li>
-        <li className="nav-item">
-          <Link to="/contact">Contact</Link> {/* Link to Contact */}
-        </li>
-      </ul>
-
-      {/* BUTTON */}
-      <div className="nav-right">
-        <button className="quote-btn">Get a Quote</button>
-      </div>
-    </nav>
+    </header>
   );
 };
 
-export default Navbar;
+export default NavBar;
