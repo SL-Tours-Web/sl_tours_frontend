@@ -1,0 +1,97 @@
+/* General Styles for the Ella Adventure page */
+.ella-adventure-page {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+
+/* Header Section */
+.ella-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.ella-header h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.ella-header .rating {
+  font-size: 1.2rem;
+  color: #888;
+}
+
+.ella-header .rating span {
+  color: #ff6e1f;
+  font-weight: bold;
+}
+
+/* Package Details Section */
+.package-details {
+  display: flex;
+  gap: 20px;
+}
+
+.package-image {
+  flex: 1;
+}
+
+.package-info {
+  flex: 2;
+}
+
+.package-info h2 {
+  font-size: 2rem;
+  color: #333;
+}
+
+.package-info p {
+  font-size: 1.1rem;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.package-info-list {
+  list-style: none;
+  padding: 0;
+}
+
+.package-info-list li {
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+}
+
+/* Price Styling */
+.price {
+  color: #ff6e1f;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+/* Booking Section */
+.booking-section {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.booking-section h2 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.book-btn {
+  padding: 12px 30px;
+  background-color: #ff6e1f;
+  color: white;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.book-btn:hover {
+  background-color: #e55a17;
+}

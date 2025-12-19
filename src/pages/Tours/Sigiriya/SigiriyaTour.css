@@ -1,0 +1,98 @@
+/* General Styles for the Sigiriya Tour page */
+.tour-page {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+
+/* Header Section */
+.tour-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.tour-header h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.tour-header .rating {
+  font-size: 1.2rem;
+  color: #888;
+}
+
+.tour-header .rating span {
+  color: #ff6e1f;
+  font-weight: bold;
+}
+
+/* Tour Details Section */
+.tour-details {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 50px;
+}
+
+.tour-image {
+  flex: 1;
+}
+
+.tour-info {
+  flex: 2;
+}
+
+.tour-info h2 {
+  font-size: 2rem;
+  color: #333;
+}
+
+.tour-info p {
+  font-size: 1.1rem;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.tour-info-list {
+  list-style: none;
+  padding: 0;
+}
+
+.tour-info-list li {
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+}
+
+/* Price Styling */
+.price {
+  color: #ff6e1f;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+/* Booking Section */
+.booking-section {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.booking-section h2 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.book-btn {
+  padding: 12px 30px;
+  background-color: #ff6e1f;
+  color: white;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.book-btn:hover {
+  background-color: #e55a17;
+}
