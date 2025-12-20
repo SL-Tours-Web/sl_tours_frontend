@@ -187,7 +187,6 @@ body {
 }
 
 /* Footer Section */
-/* Footer Section */
 .footer {
   background-color: #333;
   color: white;
@@ -322,29 +321,6 @@ body {
   }
 }
 
-
-/* Mobile Responsiveness */
-@media (max-width: 768px) {
-  .footer-content {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .footer-left,
-  .footer-links,
-  .footer-newsletter,
-  .footer-payment,
-  .footer-social {
-    min-width: 100%;
-    text-align: center;
-    margin-bottom: 20px;
-  }
-
-  .footer-newsletter input {
-    width: 80%;
-    margin-bottom: 10px;
-  }
-}
 
 /* Hero Section Video Background */
 .hero {

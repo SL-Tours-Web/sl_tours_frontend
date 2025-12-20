@@ -27,22 +27,26 @@ const App = () => {
 </section>
 
       {/* About Us Section */}
-      <section className="about-us">
-        <h2>About Us</h2>
-        <p>We are Sri Lanka's leading destination management company offering exclusive travel packages and tours across Sri Lanka and beyond.</p>
-      </section>
+<section className="about-us">
+  <div className="content">
+    <h2>About Us</h2>
+    <p>We are Sri Lanka's leading destination management company offering exclusive travel packages and tours across Sri Lanka and beyond.</p>
+  </div>
+  <img src="Images/.jpg" alt="Sri Lanka Tours" />
+</section>
+
 
       {/* Tour Categories Section */}
       <section className="tour-categories">
         <h2>Tour Categories</h2>
         <div className="category-grid">
           <div className="category-item">
-            <img src="Images/abc.jpg" alt="Sri Lanka Tours" />
-            <p>Sri Lanka Tours</p>
+            <img src="Images/home.jpg" alt="Sri Lanka Tours" />
+            <p>Cultural Tours</p>
           </div>
           <div className="category-item">
             <img src="Images/def.jpg" alt="Maldives Tours" />
-            <p>Maldives Tours</p>
+            <p>Adventure Tours</p>
           </div>
           <div className="category-item">
             <img src="Images/ijk.jpg" alt="Custom Tours" />
