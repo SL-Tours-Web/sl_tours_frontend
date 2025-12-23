@@ -1,0 +1,143 @@
+/* General Layout */
+.about-us-container {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Hero Section */
+.hero-section {
+  /* background-image: url('Images/walkers.jpg'); */
+  background-size: cover;
+  background-position: center;
+  color: white;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.hero-section h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.hero-section p {
+  font-size: 1.25rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* About Section */
+.about-section {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
+}
+
+.about-text {
+  width: 60%;
+  padding-right: 20px;
+}
+
+.about-text h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.about-text p {
+  font-size: 1.2rem;
+  color: #555;
+}
+
+.about-image {
+  width: 35%;
+}
+
+.about-image img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+/* Team Section */
+.team-section {
+  margin-top: 60px;
+  text-align: center;
+}
+
+.team-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.team-member {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.team-member img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 15px;
+}
+
+.team-member h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.team-member p {
+  font-size: 1.2rem;
+  color: #555;
+}
+
+/* Contact Information Section */
+.contact-info {
+  margin-top: 60px;
+  text-align: center;
+}
+
+.contact-info h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.contact-details {
+  font-size: 1.2rem;
+  color: #555;
+}
+
+.contact-details a {
+  color: #0066cc;
+  text-decoration: none;
+}
+
+.contact-details a:hover {
+  text-decoration: underline;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .about-section {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .about-text,
+  .about-image {
+    width: 100%;
+  }
+
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+}
