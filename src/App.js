@@ -8,13 +8,14 @@ import Home from "./pages/Home/Home";
 import Contact from "./pages/Contact/Contact";
 import Gallery from "./pages/Gallery/Gallery";
 import About from "./pages/about/About";
+import ClientTours from "./pages/Tours/ClientTours";
 
 // Admin
 import AdminLogin from "./admin/pages/Login";
 import Dashboard from "./admin/pages/Dashboard";
 import ProtectedRoute from "./admin/components/ProtectedRoute";
 import AdminGallery from "./admin/pages/Gallery";
-import Tours from "./admin/pages/Tours";
+import AdminTours from "./admin/pages/AdminTours";
 import Destinations from "./admin/pages/Destinations";
 
 // Styles
@@ -31,6 +32,11 @@ function App() {
         <Route
           path="/"
           element={<><NavBar /><Home /></>}
+        />
+
+        <Route
+          path="/ClientTours"
+          element={<><NavBar /><ClientTours /></>}
         />
 
         <Route
@@ -61,10 +67,10 @@ function App() {
         />
 
         <Route
-          path="/admin/tours"
+          path="/admin/AdminTours"
           element={
             <ProtectedRoute>
-              <Tours />
+              <AdminTours />
             </ProtectedRoute>
           }
         />
