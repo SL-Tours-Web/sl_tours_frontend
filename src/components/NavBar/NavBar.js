@@ -16,7 +16,7 @@ const NavBar = () => {
       <nav className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
         <ul>
           <li><a href="/">Home</a></li>
-          <li><a href="#sri-lanka-tours">Sri Lanka Tours</a></li>
+          <li><a href="/ClientTours">Sri Lanka Tours</a></li>
           <li><a href="/destinations">Popular Destinations</a></li>
           <li><a href="/gallery">Tour Gallery</a></li>
           {/* <li><a href="#mice">MICE</a></li> */}
