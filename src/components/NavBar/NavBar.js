@@ -17,11 +17,11 @@ const NavBar = () => {
         <ul>
           <li><a href="/">Home</a></li>
           <li><a href="#sri-lanka-tours">Sri Lanka Tours</a></li>
-          <li><a href="#maldives-tours">Popular Destinations</a></li>
-          <li><a href="Pages/Gallery/Gallery.js">Tour Gallery</a></li>
+          <li><a href="/destinations">Popular Destinations</a></li>
+          <li><a href="/gallery">Tour Gallery</a></li>
           {/* <li><a href="#mice">MICE</a></li> */}
-          <li><a href="pages/Contact/Contact.js">Contact Us</a></li>
-          <li><a href="pages/about/about">About Us</a></li>
+          <li><a href="/contact">Contact Us</a></li>
+          <li><a href="/about">About Us</a></li>
         </ul>
       </nav>
       <div className="nav-icons">
