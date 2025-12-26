@@ -22,7 +22,7 @@ const App = () => {
   <div className="hero-content">
     <h1>Discover Unforgettable Journeys</h1>
     <p>Your adventure begins here</p>
-    <a href="#tours" className="cta-button">Explore Tours</a>
+    <a href="/ClientTours" className="cta-button">Explore Tours</a>
   </div>
 </section>
 
@@ -53,6 +53,7 @@ const App = () => {
             <p>Custom Tours</p>
           </div>
         </div>
+        <a href="/ClientTours" className="cta-button">Explore Tours</a>
       </section>
 
       {/* Featured Tours Section */}
