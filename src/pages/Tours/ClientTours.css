@@ -1,0 +1,86 @@
+.client-tours {
+  padding: 60px 20px;
+  background: #f9fafb;
+  text-align: center;
+}
+
+.client-tours h2 {
+  font-size: 34px;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  color: #555;
+  margin-bottom: 40px;
+  font-size: 16px;
+}
+
+/* Grid */
+.tours-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 28px;
+}
+
+/* Card */
+.tour-card {
+  background: white;
+  padding: 26px;
+  border-radius: 14px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tour-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
+}
+
+.tour-card h3 {
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.days {
+  color: #2563eb;
+  margin-bottom: 8px;
+}
+
+.description {
+  color: #555;
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 14px;
+}
+
+.price {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+/* Button */
+.btn-view {
+  width: 100%;
+  padding: 10px 14px;
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.btn-view:hover {
+  background: #1e40af;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .client-tours h2 {
+    font-size: 28px;
+  }
+}
