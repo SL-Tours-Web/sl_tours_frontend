@@ -13,9 +13,9 @@ import About from "./pages/about/About";
 import AdminLogin from "./admin/pages/Login";
 import Dashboard from "./admin/pages/Dashboard";
 import ProtectedRoute from "./admin/components/ProtectedRoute";
+import AdminGallery from "./admin/pages/Gallery";
 import Tours from "./admin/pages/Tours";
 import Destinations from "./admin/pages/Destinations";
-import AdminGallery from "./admin/pages/Gallery";
 
 // Styles
 import "./App.css";
