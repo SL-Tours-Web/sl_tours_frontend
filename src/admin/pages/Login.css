@@ -1,0 +1,66 @@
+/* Full page center */
+.admin-login-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #111827, #1f2933);
+  font-family: Arial, sans-serif;
+}
+
+/* Login card */
+.admin-login-card {
+  background: #ffffff;
+  width: 100%;
+  max-width: 380px;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+}
+
+/* Title */
+.admin-login-card h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #111827;
+}
+
+/* Inputs */
+.admin-login-card input {
+  width: 100%;
+  padding: 12px 14px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  font-size: 14px;
+}
+
+.admin-login-card input:focus {
+  outline: none;
+  border-color: #2563eb;
+}
+
+/* Button */
+.admin-login-card button {
+  width: 100%;
+  padding: 12px;
+  background: #2563eb;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.admin-login-card button:hover {
+  background: #1e40af;
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .admin-login-card {
+    padding: 22px;
+  }
+}
