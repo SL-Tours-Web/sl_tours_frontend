@@ -1,31 +1,94 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import NavBar from "./components/NavBar/NavBar";
+
+// Public pages
 import Home from "./pages/Home/Home";
-import NavBar from "./components/NavBar/NavBar"; 
-// import EllaAdventure from "./pages/Tours/Ella/EllaAdventure";
-// import SigiriyaTour from "./pages/Tours/Sigiriya/SigiriyaTour";
 import Contact from "./pages/Contact/Contact";
 import Gallery from "./pages/Gallery/Gallery";
-import "./App.css";
-import './pages/Home/Home.css';  // Correct the path
-import './pages/Contact/Contact.css';
-import about from "./pages/about/about";
+import About from "./pages/about/About";
 
+// Admin
+import AdminLogin from "./admin/pages/Login";
+import Dashboard from "./admin/pages/Dashboard";
+import ProtectedRoute from "./admin/components/ProtectedRoute";
+import Tours from "./admin/pages/Tours";
+import Destinations from "./admin/pages/Destinations";
+import AdminGallery from "./admin/pages/Gallery";
+
+// Styles
+import "./App.css";
+import "./pages/Home/Home.css";
+import "./pages/Contact/Contact.css";
 
 function App() {
   return (
-    <Router>
-      <NavBar />
+    <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home />} />
-        {/* <Route path="/ella-adventure" element={<EllaAdventure />} />
-        <Route path="/sigiriya-tour" element={<SigiriyaTour />} /> */}
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/gallery" element={<Gallery />} />
-        <Route path="/about" element={<about />} />
+
+        {/* ===== Public Website ===== */}
+        <Route
+          path="/"
+          element={<><NavBar /><Home /></>}
+        />
+
+        <Route
+          path="/contact"
+          element={<><NavBar /><Contact /></>}
+        />
+
+        <Route
+          path="/gallery"
+          element={<><NavBar /><Gallery /></>}
+        />
+
+        <Route
+          path="/about"
+          element={<><NavBar /><About /></>}
+        />
+
+        {/* ===== Admin ===== */}
+        <Route path="/admin/login" element={<AdminLogin />} />
+
+        <Route
+          path="/admin/dashboard"
+          element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/admin/tours"
+          element={
+            <ProtectedRoute>
+              <Tours />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/admin/destinations"
+          element={
+            <ProtectedRoute>
+              <Destinations />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/admin/gallery"
+          element={
+            <ProtectedRoute>
+              <AdminGallery />
+            </ProtectedRoute>
+          }
+        />
 
       </Routes>
-    </Router>
+    </BrowserRouter>
   );
 }
 
