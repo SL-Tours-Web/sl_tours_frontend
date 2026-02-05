@@ -24,7 +24,7 @@ export default function Login() {
   return (
     <div className="admin-login-wrapper">
       <div className="admin-login-card">
-        <h2>Admin Login</h2>
+        <h2>Vibe Ceylon Tours - Admin Login</h2>
 
         <input
           type="email"

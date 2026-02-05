@@ -5,10 +5,12 @@ import "./Sidebar.css";
 export default function Sidebar() {
   return (
     <div className="sidebar">
-      <h2 className="logo">Admin</h2>
+      <h2 className="logo">Vibe Ceylon Tours - Admin</h2>
 
       <nav>
         <NavLink to="/admin/dashboard">Dashboard</NavLink>
+        <NavLink to="/admin/AdminCategories">Categories</NavLink>
+        <NavLink to="/admin/AdminPackages">Packages</NavLink>
         <NavLink to="/admin/AdminTours">Tours</NavLink>
         <NavLink to="/admin/destinations">Destinations</NavLink>
         <NavLink to="/admin/gallery">Gallery</NavLink>
