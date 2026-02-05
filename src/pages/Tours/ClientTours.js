@@ -1,62 +1,106 @@
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import "./ClientTours.css";
 
-export default function Tours() {
-  const tours = [
-    {
-      id: 1,
-      title: "Ella Adventure",
-      days: 3,
-      price: 250,
-      description: "Explore Ella, Nine Arches Bridge, and scenic mountains."
-    },
-    {
-      id: 2,
-      title: "Sigiriya Day Tour",
-      days: 1,
-      price: 120,
-      description: "Visit the Sigiriya Rock Fortress and nearby villages."
-    },
-    {
-      id: 3,
-      title: "Kandy Cultural Trip",
-      days: 2,
-      price: 180,
-      description: "Temple of the Tooth, Kandy Lake, and cultural shows."
-    },
-    {
-      id: 4,
-      title: "Galle Heritage Tour",
-      days: 1,
-      price: 140,
-      description: "Galle Fort, beaches, and colonial architecture."
-    }
-  ];
+export default function ClientTours() {
+  const [categories, setCategories] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
+
+  // Category images mapping
+  const categoryImages = {
+    "Beach Tours": "Images/home.jpg",
+    "Mountain Trekking": "Images/def.jpg",
+    "Cultural Heritage": "Images/home.jpg",
+    "Adventure Sports": "Images/def.jpg",
+    "City Tours": "Images/home.jpg",
+    "Wildlife Safari": "Images/def.jpg",
+  };
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const res = await axios.get("http://localhost:5000/api/categories");
+        setCategories(res.data);
+        setLoading(false);
+      } catch (err) {
+        console.error("Error fetching categories", err);
+        setError("Failed to load tour categories");
+        setLoading(false);
+      }
+    };
+
+    fetchCategories();
+  }, []);
+
+  if (loading) {
+    return (
+      <section className="client-tours">
+        <div className="tours-header">
+          <h1>Discover Sri Lanka Tours</h1>
+          <p>Explore our curated tour categories and find your perfect adventure</p>
+        </div>
+        <div className="tours-grid">
+          <p className="loading-message">Loading tour categories...</p>
+        </div>
+      </section>
+    );
+  }
+
+  if (error) {
+    return (
+      <section className="client-tours">
+        <div className="tours-header">
+          <h1>Discover Sri Lanka Tours</h1>
+          <p>Explore our curated tour categories and find your perfect adventure</p>
+        </div>
+        <div className="tours-grid">
+          <p className="error-message">{error}</p>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className="client-tours">
-      <h2>Our Tour Packages</h2>
-      <p className="subtitle">
-        Choose from our carefully designed travel experiences.
-      </p>
+      <div className="tours-header">
+        <h1>Discover Sri Lanka Tours</h1>
+        <p>Explore our curated tour categories and find your perfect adventure</p>
+      </div>
 
       <div className="tours-grid">
-        {tours.map((tour) => (
-          <div key={tour.id} className="tour-card">
-            <h3>{tour.title}</h3>
+        {categories && categories.length > 0 ? (
+          categories.map((category) => (
+            <div
+              key={category._id}
+              className="category-card"
+              onClick={() => navigate(`/category/${category._id}`)}
+            >
+              <div className="card-image-container">
+                <img
+                  src={categoryImages[category.name] || "Images/home.jpg"}
+                  alt={category.name}
+                  className="card-image"
+                />
+                <div className="card-overlay"></div>
+              </div>
 
-            <p className="days">
-              <b>{tour.days}</b> Day{tour.days > 1 ? "s" : ""}
-            </p>
-
-            <p className="description">{tour.description}</p>
-
-            <p className="price">${tour.price}</p>
-
-            <button className="btn-view">
-              View Details
-            </button>
-          </div>
-        ))}
+              <div className="card-content">
+                <h3 className="category-name">{category.name}</h3>
+                <p className="category-description">{category.description}</p>
+                <div className="card-footer">
+                  <button className="btn-explore">
+                    Explore Packages →
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))
+        ) : (
+          <p className="no-packages">No tour categories available at the moment.</p>
+        )}
       </div>
     </section>
   );

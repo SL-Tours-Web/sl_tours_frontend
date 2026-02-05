@@ -8,8 +8,8 @@ const about = () => {
       {/* Hero Section */}
       <section className="hero-section">
         <div className="hero-content">
-          <h1>About Us</h1>
-          <p>Learn more about Walkers Tours and why we are the best choice for your Sri Lanka travel adventures.</p>
+          <h1>About Vibe Ceylon Tours</h1>
+          <p>Learn more about why we are Sri Lanka's premier choice for authentic travel adventures and unforgettable experiences.</p>
         </div>
       </section>
 
@@ -18,14 +18,14 @@ const about = () => {
         <div className="about-text">
           <h2>Who We Are</h2>
           <p>
-            Walkers Tours is Sri Lanka’s premier destination management company, offering personalized tours, adventure travel, and tailor-made packages to suit every traveler’s needs.
+            Vibe Ceylon Tours is Sri Lanka's premier destination management company, offering personalized tours, adventure travel, and tailor-made packages to suit every traveler's needs.
           </p>
           <p>
-            With over 55 years of experience, our dedicated team ensures you get the best services, from booking to transport, guided tours, and accommodation, making your trip seamless and unforgettable.
+            With extensive experience and deep local knowledge, our dedicated team ensures you get the best services, from booking to transport, guided tours, and accommodation, making your trip seamless and unforgettable.
           </p>
         </div>
         <div className="about-image">
-          <img src="Images/walkers.jpg" alt="Walkers Tours" />
+          <img src="Images/srilanka.jpg" alt="Vibe Ceylon Tours" />
         </div>
       </section>
 
@@ -35,12 +35,12 @@ const about = () => {
         <div className="team-grid">
           {/* Add team members here */}
           <div className="team-member">
-            <img src="Images/walkers.jpg" alt="Team Member 1" />
+            <img src="Images/team1.jpg" alt="Vibe Ceylon Tours Team Member 1" />
             <h3>John Doe</h3>
             <p>CEO</p>
           </div>
           <div className="team-member">
-            <img src="Images/walkers.jpg" alt="Team Member 2" />
+            <img src="Images/team2.jpg" alt="Vibe Ceylon Tours Team Member 2" />
             <h3>Jane Smith</h3>
             <p>Marketing Manager</p>
           </div>
@@ -53,9 +53,9 @@ const about = () => {
         <h2>Contact Us</h2>
         <p>If you have any questions, feel free to reach out!</p>
         <div className="contact-details">
-          <p><strong>Email:</strong> <a href="mailto:info@walkerstours.com">info@walkerstours.com</a></p>
+          <p><strong>Email:</strong> <a href="mailto:info@vibeceylontours.com">info@vibeceylontours.com</a></p>
           <p><strong>Phone:</strong> +94 76 8511 264</p>
-          <p><strong>Address:</strong> No 117, Sir Chittampalam A Gardiner Mawatha, Colombo O2, Sri Lanka</p>
+          <p><strong>Address:</strong> No 117, Sir Chittampalam A Gardiner Mawatha, Colombo 02, Sri Lanka</p>
         </div>
       </section>
     </div>

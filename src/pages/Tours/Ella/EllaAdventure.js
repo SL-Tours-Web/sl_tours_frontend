@@ -29,7 +29,6 @@ const EllaAdventure = () => {
           <ul className="package-info-list">
             <li><strong>Duration:</strong> 2 Days</li>
             <li><strong>Group Size:</strong> 1-4 People</li>
-            <li><strong>Price:</strong> <span className="price">$250 / person</span></li>
           </ul>
         </div>
       </section>

@@ -11,7 +11,7 @@ const NavBar = () => {
   return (
     <header className="navbar">
       <div className="logo">
-        <a href="/">Walkers Tours</a>
+        <a href="/">Vibe Ceylon Tours</a>
       </div>
       <nav className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
         <ul>

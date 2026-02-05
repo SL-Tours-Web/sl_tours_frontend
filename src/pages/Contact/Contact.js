@@ -30,7 +30,7 @@ const Contact = () => {
     <div className="contact-container">
       <section className="contact-header">
         <h2>Connect with Us, Start Your Sri Lanka Journey</h2>
-        <p>Reach out to Walkers Tours for personalized assistance, inquiries, or bookings.</p>
+        <p>Reach out to Vibe Ceylon Tours for personalized assistance, inquiries, or bookings.</p>
       </section>
 
       <section className="contact-form">
@@ -121,10 +121,10 @@ const Contact = () => {
         <h3>General Contacts</h3>
         <div className="contact-info">
           <div className="address">
-            <p><strong>Walkers Tours Limited</strong></p>
-            <p>No 117, Sir Chittampalam A Gardiner Mawatha, Colombo O2, Sri Lanka.</p>
+            <p><strong>Vibe Ceylon Tours</strong></p>
+            <p>No 117, Sir Chittampalam A Gardiner Mawatha, Colombo 02, Sri Lanka.</p>
             <p>Phone: +94 76 8511 264</p>
-            <p>Email: <a href="mailto:info@walkerstours.com">info@walkerstours.com</a></p>
+            <p>Email: <a href="mailto:info@vibeceylontours.com">info@vibeceylontours.com</a></p>
           </div>
 
           <div className="map">

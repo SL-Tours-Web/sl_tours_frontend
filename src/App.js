@@ -9,6 +9,9 @@ import Contact from "./pages/Contact/Contact";
 import Gallery from "./pages/Gallery/Gallery";
 import About from "./pages/about/About";
 import ClientTours from "./pages/Tours/ClientTours";
+import TourCategories from "./pages/TourCategories/TourCategories";
+import CategoryDetail from "./pages/Categories/CategoryDetail";
+import PackageDetail from "./pages/PackageDetail/PackageDetail";
 
 // Admin
 import AdminLogin from "./admin/pages/Login";
@@ -16,7 +19,10 @@ import Dashboard from "./admin/pages/Dashboard";
 import ProtectedRoute from "./admin/components/ProtectedRoute";
 import AdminGallery from "./admin/pages/Gallery";
 import AdminTours from "./admin/pages/AdminTours";
+import AdminPackages from "./admin/AdminPages/AdminPackages";
+import AdminCategories from "./admin/AdminPages/AdminCategories";
 import Destinations from "./admin/pages/Destinations";
+import PopularDestinations from "./pages/Destinations/PopularDestinations";
 
 // Styles
 import "./App.css";
@@ -27,6 +33,10 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route
+          path="/destinations"
+          element={<><NavBar /><PopularDestinations /></>}
+        />
 
         {/* ===== Public Website ===== */}
         <Route
@@ -37,6 +47,21 @@ function App() {
         <Route
           path="/ClientTours"
           element={<><NavBar /><ClientTours /></>}
+        />
+
+        <Route
+          path="/categories"
+          element={<><NavBar /><TourCategories /></>}
+        />
+
+        <Route
+          path="/category/:categoryId"
+          element={<><NavBar /><CategoryDetail /></>}
+        />
+
+        <Route
+          path="/package/:packageId"
+          element={<><NavBar /><PackageDetail /></>}
         />
 
         <Route
@@ -71,6 +96,24 @@ function App() {
           element={
             <ProtectedRoute>
               <AdminTours />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/admin/AdminCategories"
+          element={
+            <ProtectedRoute>
+              <AdminCategories />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/admin/AdminPackages"
+          element={
+            <ProtectedRoute>
+              <AdminPackages />
             </ProtectedRoute>
           }
         />

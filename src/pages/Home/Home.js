@@ -1,8 +1,61 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import './Home.css';
 
 const App = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [categories, setCategories] = useState([]);
+  const [packages, setPackages] = useState([]);
+  const [featuredPackages, setFeaturedPackages] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
+
+  // Category images mapping
+  const categoryImages = {
+    "Beach Tours": "Images/home.jpg",
+    "Mountain Trekking": "Images/def.jpg",
+    "Cultural Heritage": "Images/home.jpg",
+    "Adventure Sports": "Images/def.jpg",
+    "City Tours": "Images/home.jpg",
+    "Wildlife Safari": "Images/def.jpg",
+  };
+
+  // Package images mapping
+  const packageImages = {
+    "7-Day Sri Lanka Beach Paradise": "Images/home.jpg",
+    "5-Day Adam's Peak Trek": "Images/def.jpg",
+    "6-Day Ancient Temples & Culture": "Images/home.jpg",
+    "4-Day Extreme Adventure": "Images/def.jpg",
+    "5-Day Ultimate Wildlife Safari": "Images/home.jpg",
+    "3-Day Colombo City & Culture": "Images/def.jpg",
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [categoriesRes, packagesRes] = await Promise.all([
+          axios.get("http://localhost:5000/api/categories"),
+          axios.get("http://localhost:5000/api/packages"),
+        ]);
+        
+        setCategories(categoriesRes.data);
+        setPackages(packagesRes.data);
+        
+        // Select 2 random packages for featured
+        if (packagesRes.data && packagesRes.data.length > 0) {
+          const shuffled = [...packagesRes.data].sort(() => Math.random() - 0.5);
+          setFeaturedPackages(shuffled.slice(0, 2));
+        }
+        
+        setLoading(false);
+      } catch (err) {
+        console.error("Error fetching data", err);
+        setLoading(false);
+      }
+    };
+    fetchData();
+  }, []);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -20,8 +73,8 @@ const App = () => {
     </video>
   </div>
   <div className="hero-content">
-    <h1>Discover Unforgettable Journeys</h1>
-    <p>Your adventure begins here</p>
+    <h1>Vibe Ceylon Tours - Discover Sri Lanka's Magic</h1>
+    <p>Experience the island of infinite beauty</p>
     <a href="/ClientTours" className="cta-button">Explore Tours</a>
   </div>
 </section>
@@ -29,8 +82,8 @@ const App = () => {
       {/* About Us Section */}
 <section className="about-us">
   <div className="content">
-    <h2>About Us</h2>
-    <p>We are Sri Lanka's leading destination management company offering exclusive travel packages and tours across Sri Lanka and beyond.</p>
+    <h2>About Vibe Ceylon Tours</h2>
+    <p>Sri Lanka's premier destination management company offering exclusive travel packages and authentic experiences across the island of infinite beauty and beyond.</p>
   </div>
   <img src="Images/.jpg" alt="Sri Lanka Tours" />
 </section>
@@ -40,34 +93,62 @@ const App = () => {
       <section className="tour-categories">
         <h2>Tour Categories</h2>
         <div className="category-grid">
-          <div className="category-item">
-            <img src="Images/home.jpg" alt="Sri Lanka Tours" />
-            <p>Cultural Tours</p>
-          </div>
-          <div className="category-item">
-            <img src="Images/def.jpg" alt="Maldives Tours" />
-            <p>Adventure Tours</p>
-          </div>
-          <div className="category-item">
-            <img src="Images/ijk.jpg" alt="Custom Tours" />
-            <p>Custom Tours</p>
-          </div>
+          {loading ? (
+            <p style={{ gridColumn: '1/-1', textAlign: 'center' }}>Loading categories...</p>
+          ) : categories && categories.length > 0 ? (
+            categories.map((category) => (
+              <div 
+                key={category._id} 
+                className="category-item"
+                onClick={() => navigate(`/category/${category._id}`)}
+                style={{ cursor: 'pointer' }}
+              >
+                <img 
+                  src={categoryImages[category.name] || "Images/home.jpg"} 
+                  alt={category.name} 
+                />
+                <div className="category-overlay"></div>
+                <p>{category.name}</p>
+              </div>
+            ))
+          ) : (
+            <p style={{ gridColumn: '1/-1', textAlign: 'center' }}>No categories available</p>
+          )}
         </div>
-        <a href="/ClientTours" className="cta-button">Explore Tours</a>
+        <a href="/ClientTours" className="cta-button">Explore All Tours</a>
       </section>
 
       {/* Featured Tours Section */}
       <section className="featured-tours">
         <h2>Featured Tours</h2>
+        <p className="featured-subtitle">Handpicked tour packages just for you</p>
         <div className="featured-grid">
-          <div className="featured-tour">
-            <img src="Images/sigiriya.jpg" alt="Tour 1" />
-            <p>Beach Paradise</p>
-          </div>
-          <div className="featured-tour">
-            <img src="Images/ella.jpg" alt="Tour 2" />
-            <p>Mountain Adventures</p>
-          </div>
+          {featuredPackages && featuredPackages.length > 0 ? (
+            featuredPackages.map((pkg) => (
+              <div 
+                key={pkg._id}
+                className="featured-tour"
+                onClick={() => navigate(`/package/${pkg._id}`)}
+                style={{ cursor: 'pointer' }}
+              >
+                <div className="featured-image-container">
+                  <img 
+                    src={packageImages[pkg.name] || "Images/home.jpg"} 
+                    alt={pkg.name}
+                  />
+                  <div className="featured-overlay"></div>
+                </div>
+                <div className="featured-content">
+                  <h3>{pkg.name}</h3>
+                  <p className="featured-duration">📅 {pkg.duration}</p>
+                  <p className="featured-transport">🚌 {pkg.transport}</p>
+                  <button className="featured-btn">View Details →</button>
+                </div>
+              </div>
+            ))
+          ) : (
+            <p style={{ gridColumn: '1/-1', textAlign: 'center' }}>Loading featured tours...</p>
+          )}
         </div>
       </section>
 
@@ -90,10 +171,10 @@ const App = () => {
 <footer className="footer">
   <div className="footer-content">
     <div className="footer-left">
-      <h4>Walkers Tours Limited</h4>
-      <p>Address: No 117, Sir Chittampalam A Gardiner Mawatha, Colombo O2, Sri Lanka.</p>
+      <h4>Vibe Ceylon Tours</h4>
+      <p>Address: No 117, Sir Chittampalam A Gardiner Mawatha, Colombo 02, Sri Lanka.</p>
       <p>Phone: +94 76 8511 264</p>
-      <p>Email: <a href="mailto:info@walkerstours.com">info@walkerstours.com</a></p>
+      <p>Email: <a href="mailto:info@vibeceylontours.com">info@vibeceylontours.com</a></p>
     </div>
 
     <div className="footer-links">
@@ -137,7 +218,7 @@ const App = () => {
     </div>
 
     <div className="footer-bottom">
-      <p>© 2025 Walkers Tours Limited. All rights reserved.</p>
+      <p>© 2025 Vibe Ceylon Tours. All rights reserved.</p>
       <div className="footer-legal">
         <a href="#">Terms & Conditions</a> | 
         <a href="#">Privacy Policy</a> | 

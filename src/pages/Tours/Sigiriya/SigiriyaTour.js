@@ -33,7 +33,6 @@ const SigiriyaTour = () => {
           <ul className="tour-info-list">
             <li><strong>Duration:</strong> 1 Day</li>
             <li><strong>Group Size:</strong> 2-6 People</li>
-            <li><strong>Price:</strong> <span className="price">$120 / person</span></li>
             <li><strong>Rating:</strong> 4.9</li>
           </ul>
         </div>
