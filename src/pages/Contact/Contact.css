@@ -12,124 +12,162 @@ body {
   color: #333;
 }
 
-.contact-container {
+
+.modern-contact {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
   padding: 40px 20px;
 }
 
-/* Header Styles */
 .contact-header {
   text-align: center;
-  margin-bottom: 50px;
+  margin-bottom: 40px;
 }
-
 .contact-header h2 {
-  font-size: 2.5rem;
-  margin-bottom: 20px;
+  font-size: 2.7rem;
+  margin-bottom: 12px;
+  font-weight: 800;
+  color: #1a365d;
 }
-
 .contact-header p {
-  font-size: 1.25rem;
-  color: #555;
+  font-size: 1.2rem;
+  color: #4a5568;
 }
 
-/* Form Section */
-.contact-form {
-  background-color: #fff;
-  padding: 30px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.contact-form h3 {
-  font-size: 2rem;
-  margin-bottom: 20px;
-}
-
-.contact-form .form-group {
-  margin-bottom: 20px;
-}
-
-.contact-form label {
-  display: block;
-  margin-bottom: 5px;
-  font-size: 1rem;
-  font-weight: bold;
-}
-
-.contact-form input,
-.contact-form select,
-.contact-form textarea {
-  width: 100%;
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  font-size: 1rem;
-}
-
-.contact-form textarea {
-  height: 150px;
-}
-
-.contact-form button {
-  background-color: #FF6600;
-  color: white;
-  padding: 12px 30px;
-  font-size: 1rem;
-  font-weight: bold;
-  border: none;
-  border-radius: 30px;
-  cursor: pointer;
-}
-
-.contact-form button:hover {
-  background-color: #e65c00;
-}
-
-/* General Contact Section */
-.general-contact {
-  margin-top: 50px;
+.contact-main {
   display: flex;
+  gap: 32px;
   justify-content: space-between;
-  gap: 20px;
 }
 
-.general-contact .contact-info {
-  width: 50%;
+.contact-card, .contact-info-card {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 6px 24px rgba(30, 64, 175, 0.10);
+  padding: 32px 28px;
+  flex: 1;
+  min-width: 320px;
+  max-width: 520px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.contact-card {
+  margin-right: 12px;
+}
+.contact-info-card {
+  margin-left: 12px;
+}
+.contact-card h3, .contact-info-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 18px;
+  color: #1a365d;
 }
 
-.general-contact .address {
+.modern-form .form-row {
+  display: flex;
+  gap: 18px;
+}
+.modern-form .form-group {
+  flex: 1;
+  margin-bottom: 18px;
+  display: flex;
+  flex-direction: column;
+}
+.modern-form label {
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #2d3748;
+}
+.modern-form input,
+.modern-form select,
+.modern-form textarea {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
   font-size: 1rem;
+  background: #f8fafc;
+  margin-bottom: 2px;
+  transition: border 0.2s;
+}
+.modern-form input:focus,
+.modern-form select:focus,
+.modern-form textarea:focus {
+  border: 1.5px solid #3182ce;
+  outline: none;
+}
+.modern-form textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+.consent-group {
+  margin-bottom: 18px;
+}
+.consent-label {
+  font-size: 0.98rem;
+  color: #4a5568;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.modern-btn {
+  background: linear-gradient(90deg, #ff6600 0%, #ffb347 100%);
+  color: #fff;
+  font-weight: 700;
+  border: none;
+  border-radius: 24px;
+  padding: 12px 32px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  margin-top: 8px;
+  box-shadow: 0 2px 8px rgba(255, 102, 0, 0.10);
+  transition: background 0.2s;
+}
+.modern-btn:hover {
+  background: linear-gradient(90deg, #ff7f2a 0%, #ffd580 100%);
+}
+.form-success {
+  margin-top: 14px;
+  color: #38a169;
+  font-weight: 600;
+  font-size: 1.1rem;
 }
 
-.general-contact .address a {
-  color: #FF6600;
+.contact-info-card .info-list {
+  margin-bottom: 18px;
+}
+.info-item {
+  display: flex;
+  align-items: center;
+  font-size: 1.08rem;
+  margin-bottom: 10px;
+  color: #2d3748;
+}
+.info-icon {
+  font-size: 1.3rem;
+  margin-right: 10px;
+}
+.info-item a {
+  color: #ff6600;
   text-decoration: none;
 }
-
-.general-contact .map {
-  width: 50%;
+.info-item a:hover {
+  text-decoration: underline;
 }
-
-.general-contact .map iframe {
+.map-embed iframe {
   width: 100%;
-  border-radius: 8px;
+  border-radius: 10px;
+  border: none;
 }
 
-/* Mobile Adjustments */
-@media (max-width: 768px) {
-  .general-contact {
+@media (max-width: 900px) {
+  .contact-main {
     flex-direction: column;
+    gap: 24px;
   }
-
-  .general-contact .contact-info,
-  .general-contact .map {
-    width: 100%;
-  }
-
-  .contact-form {
-    padding: 20px;
+  .contact-card, .contact-info-card {
+    margin: 0;
+    max-width: 100%;
   }
 }
