@@ -140,7 +140,7 @@ const App = () => {
                 </div>
                 <div className="featured-content">
                   <h3>{pkg.name}</h3>
-                  <p className="featured-duration">📅 {pkg.duration}</p>
+                  <p className="featured-duration">� {pkg.duration}</p>
                   <p className="featured-transport">🚌 {pkg.transport}</p>
                   <button className="featured-btn">View Details →</button>
                 </div>
@@ -168,66 +168,49 @@ const App = () => {
       </section>
 
       {/* Footer Section */}
-<footer className="footer">
-  <div className="footer-content">
-    <div className="footer-left">
-      <h4>Vibe Ceylon Tours</h4>
-      <p>Address: No 117, Sir Chittampalam A Gardiner Mawatha, Colombo 02, Sri Lanka.</p>
-      <p>Phone: +94 76 8511 264</p>
-      <p>Email: <a href="mailto:info@vibeceylontours.com">info@vibeceylontours.com</a></p>
-    </div>
-
-    <div className="footer-links">
-      <h5>Quick Links</h5>
-      <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Sri Lanka Tours</a></li>
-        <li><a href="#">Maldives Tours</a></li>
-        <li><a href="#">Excursions</a></li>
-        <li><a href="#">MICE</a></li>
-        <li><a href="#">About Us</a></li>
-        <li><a href="#">Sustainability</a></li>
-        <li><a href="#">Careers</a></li>
-        <li><a href="#">Contact Us</a></li>
-      </ul>
-    </div>
-
-    <div className="footer-newsletter">
-      <h5>Newsletter</h5>
-      <input type="email" placeholder="Enter your email address" />
-      <button>Subscribe</button>
-    </div>
-
-    <div className="footer-payment">
-      <h5>Our Payment Partners</h5>
-      <div className="payment-icons">
-        <img src="path-to-visa-logo.png" alt="Visa" />
-        <img src="path-to-mastercard-logo.png" alt="Mastercard" />
-        <img src="path-to-safekey-logo.png" alt="SafeKey" />
-        <img src="path-to-umapay-logo.png" alt="UMapay" />
-      </div>
-    </div>
-
-    <div className="footer-social">
-      <h5>Follow Us</h5>
-      <div className="social-icons">
-        <a href="#">Facebook</a>
-        <a href="#">Instagram</a>
-        <a href="#">LinkedIn</a>
-      </div>
-    </div>
-
-    <div className="footer-bottom">
-      <p>© 2025 Vibe Ceylon Tours. All rights reserved.</p>
-      <div className="footer-legal">
-        <a href="#">Terms & Conditions</a> | 
-        <a href="#">Privacy Policy</a> | 
-        <a href="#">GDPR</a> | 
-        <a href="#">Sitemap</a>
-      </div>
-    </div>
-  </div>
-</footer>
+      <footer className="footer modern-footer">
+        <div className="footer-content modern-footer-content">
+          <div className="footer-brand">
+            <img src="/Images/logo.png" alt="Vibe Ceylon Tours Logo" className="footer-logo" />
+            <h4>Vibe Ceylon Tours</h4>
+            <p className="footer-tagline">Experience Sri Lanka & Maldives like never before.</p>
+          </div>
+          <div className="footer-links modern-footer-links">
+            <h5>Quick Links</h5>
+            <ul>
+              <li><a href="#">Home</a></li>
+              <li><a href="#">Sri Lanka Tours</a></li>
+              <li><a href="#">Maldives Tours</a></li>
+              <li><a href="#">Excursions</a></li>
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Contact Us</a></li>
+            </ul>
+          </div>
+          <div className="footer-contact modern-footer-contact">
+            <h5>Contact</h5>
+            <p><span className="footer-icon">📍</span> No 117, Sir Chittampalam A Gardiner Mawatha, Colombo 02, Sri Lanka</p>
+            <p><span className="footer-icon">📞</span> <a href="tel:+94768511264">+94 76 8511 264</a></p>
+            <p><span className="footer-icon">✉️</span> <a href="mailto:info@vibeceylontours.com">info@vibeceylontours.com</a></p>
+          </div>
+          <div className="footer-social modern-footer-social">
+            <h5>Follow Us</h5>
+            <div className="social-icons">
+              <a href="#" aria-label="Facebook"><img src="/Images/facebook.svg" alt="Facebook" /></a>
+              <a href="#" aria-label="Instagram"><img src="/Images/instagram.svg" alt="Instagram" /></a>
+              <a href="#" aria-label="LinkedIn"><img src="/Images/linkedin.svg" alt="LinkedIn" /></a>
+            </div>
+          </div>
+        </div>
+        <div className="footer-bottom modern-footer-bottom">
+          <p>© 2025 Vibe Ceylon Tours. All rights reserved.</p>
+          <div className="footer-legal">
+            <a href="#">Terms & Conditions</a> | 
+            <a href="#">Privacy Policy</a> | 
+            <a href="#">GDPR</a> | 
+            <a href="#">Sitemap</a>
+          </div>
+        </div>
+      </footer>
 
     </div>
   );
