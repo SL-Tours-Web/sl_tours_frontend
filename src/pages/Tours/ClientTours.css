@@ -1,6 +1,7 @@
+
 .client-tours {
   padding: 80px 20px;
-  background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
+  background: linear-gradient(120deg, #f5f7fa 0 50%, #ffecd2 50% 100%);
   min-height: 100vh;
 }
 
