@@ -16,7 +16,7 @@ export default function ClientTours() {
     "Cultural Heritage": "Images/home.jpg",
     "Adventure Sports": "Images/def.jpg",
     "City Tours": "Images/home.jpg",
-    "Wildlife Safari": "Images/def.jpg",
+    "Wildlife Safari": "Images/IMG_20190216_113743.jpg",
   };
 
   useEffect(() => {
