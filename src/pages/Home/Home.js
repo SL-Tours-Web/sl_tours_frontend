@@ -104,7 +104,7 @@ const App = () => {
                 style={{ cursor: 'pointer' }}
               >
                 <img 
-                  src={categoryImages[category.name] || "Images/home.jpg"} 
+                  src={categoryImages[category.name] || "Images/ijk.jpg"} 
                   alt={category.name} 
                 />
                 <div className="category-overlay"></div>
