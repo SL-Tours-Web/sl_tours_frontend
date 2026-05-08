@@ -18,7 +18,7 @@ import AdminLogin from "./admin/pages/Login";
 import Dashboard from "./admin/pages/Dashboard";
 import ProtectedRoute from "./admin/components/ProtectedRoute";
 import AdminGallery from "./admin/pages/Gallery";
-import AdminTours from "./admin/pages/AdminTours";
+import AdminTours from "./admin/AdminPages/AdminTours";
 import AdminPackages from "./admin/AdminPages/AdminPackages";
 import AdminCategories from "./admin/AdminPages/AdminCategories";
 import AdminInquiries from "./admin/AdminPages/AdminInquiries";

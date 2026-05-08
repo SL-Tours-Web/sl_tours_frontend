@@ -6,7 +6,7 @@ export default function Topbar() {
 
   return (
     <div className="topbar">
-      <span>Admin Panel</span>
+      <h3>Admin Panel</h3>
       <button onClick={logout}>Logout</button>
     </div>
   );

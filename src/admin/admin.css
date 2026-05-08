@@ -28,7 +28,7 @@
 
 .topbar {
   height: 60px;
-  background: white;
+  background: rgba(22, 76, 93, 0.405);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -37,7 +37,14 @@
 }
 
 .topbar button {
-  background: #e53935;
+  background: #620503;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+.topbar button:hover {
+  background: #e8120e;
   color: white;
   border: none;
   padding: 6px 12px;

@@ -1,8 +1,12 @@
 .sidebar {
   width: 220px;
-  background: #111;
+  background: #443e3e;
   color: white;
   padding: 20px;
+}
+
+.sidebar .logo {
+  color: rgb(183, 68, 144);
 }
 
 .sidebar a {

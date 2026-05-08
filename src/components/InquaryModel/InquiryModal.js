@@ -61,7 +61,7 @@ const InquiryModal = ({ isOpen, closeModal }) => {
         </form>
 
         <div className="whatsapp-btn">
-          <a href="https://wa.me/+94768511264" target="_blank" rel="noopener noreferrer">
+          <a href="https://wa.me/94706423059" target="_blank" rel="noopener noreferrer">
             <img src="whatsapp-icon.png" alt="WhatsApp" />
           </a>
         </div>

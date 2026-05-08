@@ -115,7 +115,7 @@ const About = () => {
               </div>
               <div>
                 <strong>Address</strong>
-                <p>No 117, Sir Chittampalam A Gardiner Mawatha, Colombo 02, Sri Lanka</p>
+                <p>236, Agalawatta</p>
               </div>
             </div>
             <div className="about-contact-item">
@@ -124,7 +124,7 @@ const About = () => {
               </div>
               <div>
                 <strong>Phone</strong>
-                <p><a href="tel:+94768511264">+94 76 8511 264</a></p>
+                <p><a href="tel:+94706423059">+94706423059</a></p>
               </div>
             </div>
             <div className="about-contact-item">

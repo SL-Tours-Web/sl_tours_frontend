@@ -12,7 +12,7 @@ const COUNTRIES = [
 const Contact = () => {
   const [formData, setFormData] = useState({
     fullName: '', email: '', whatsapp: '', country: '',
-    packageInterested: '', travelDates: '', groupSize: '', message: '',
+    packageInterested: '', travelStartDate: '', travelEndDate: '', groupSize: '', message: '',
   });
   const [consent, setConsent] = useState(false);
   const [packages, setPackages] = useState([]);
@@ -39,7 +39,7 @@ const Contact = () => {
         groupSize: formData.groupSize ? parseInt(formData.groupSize) : 1,
       });
       setSubmitted(true);
-      setFormData({ fullName: '', email: '', whatsapp: '', country: '', packageInterested: '', travelDates: '', groupSize: '', message: '' });
+      setFormData({ fullName: '', email: '', whatsapp: '', country: '', packageInterested: '', travelStartDate: '', travelEndDate: '', groupSize: '', message: '' });
       setConsent(false);
     } catch (err) {
       setError(err.response?.data?.message || 'Something went wrong. Please try again.');
@@ -116,9 +116,15 @@ const Contact = () => {
               </div>
             </div>
 
-            <div className="form-group">
-              <label htmlFor="travelDates">Preferred Travel Dates</label>
-              <input type="text" id="travelDates" name="travelDates" value={formData.travelDates} onChange={handleChange} placeholder="e.g. March 2026, flexible for 2 weeks" />
+            <div className="form-row">
+              <div className="form-group">
+                <label htmlFor="travelStartDate">Start Date</label>
+                <input type="date" id="travelStartDate" name="travelStartDate" value={formData.travelStartDate} onChange={handleChange} />
+              </div>
+              <div className="form-group">
+                <label htmlFor="travelEndDate">End Date</label>
+                <input type="date" id="travelEndDate" name="travelEndDate" value={formData.travelEndDate} onChange={handleChange} />
+              </div>
             </div>
 
             <div className="form-group">
@@ -150,7 +156,7 @@ const Contact = () => {
           <h3>Contact Information</h3>
           <div className="info-list">
             <div className="info-item"><span className="info-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg></span><strong>Vibe Ceylon Tours</strong></div>
-            <div className="info-item"><span className="info-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></span>No 117, Sir Chittampalam A Gardiner Mawatha, Colombo 02, Sri Lanka</div>
+            <div className="info-item"><span className="info-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></span>236, Agalawatta</div>
             <div className="info-item"><span className="info-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.69 15.1a19.79 19.79 0 01-3.07-8.67A2 2 0 013.62 4.18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.91 11a16 16 0 006 6l.92-.92a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0121.9 18.3z"/></svg></span><a href="tel:+94706423059">+94 70 642 3059</a></div>
             <div className="info-item"><span className="info-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span><a href="mailto:info@vibeceylontours.com">info@vibeceylontours.com</a></div>
             <div className="info-item">

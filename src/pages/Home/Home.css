@@ -673,7 +673,7 @@
   font-family: var(--font-serif);
   font-size: 1.3rem;
   font-weight: 700;
-  color: white;
+  color: white !important;
   margin: 0 0 6px;
   line-height: 1.2;
 }
