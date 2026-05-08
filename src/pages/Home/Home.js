@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import api, { API_URL } from '../../config/api';
 import './Home.css';
+import { FaLandmark, FaMountain, FaUmbrellaBeach, FaPaw, FaStar, FaSuitcaseRolling, FaMapMarkerAlt, FaTrophy, FaLeaf, FaCity, FaUsers, FaSearch, FaComments, FaMap, FaPlane, FaGlobe, FaTree } from 'react-icons/fa';
+import { GiElephant } from 'react-icons/gi';
 
 function useReveal(deps = []) {
   useEffect(() => {
@@ -68,7 +70,7 @@ const POPULAR_DESTINATIONS = [
 const TRAVEL_STYLES = [
   {
     id: 'cultural',
-    icon: '🏛️',
+    icon: <FaLandmark />,
     title: 'Cultural Explorer',
     desc: 'Ancient temples, UNESCO sites & rich history',
     color: '#0D4F5C',
@@ -76,7 +78,7 @@ const TRAVEL_STYLES = [
   },
   {
     id: 'adventure',
-    icon: '🧗',
+    icon: <FaMountain />,
     title: 'Adventure Seeker',
     desc: 'Hikes, waterfalls, train rides & wild landscapes',
     color: '#1A7080',
@@ -84,7 +86,7 @@ const TRAVEL_STYLES = [
   },
   {
     id: 'beach',
-    icon: '🏖️',
+    icon: <FaUmbrellaBeach />,
     title: 'Beach Lover',
     desc: 'Pristine beaches, surf & whale watching',
     color: '#C8965A',
@@ -92,7 +94,7 @@ const TRAVEL_STYLES = [
   },
   {
     id: 'wildlife',
-    icon: '🐆',
+    icon: <FaPaw />,
     title: 'Wildlife Enthusiast',
     desc: 'Safaris, leopards, elephants & birdwatching',
     color: '#2E5A2E',
@@ -191,7 +193,7 @@ export default function Home() {
             <a href="/contact" className="btn-ghost hero__btn">Plan My Trip</a>
           </div>
           <div className="hero__trust-row">
-            <span>⭐⭐⭐⭐⭐</span>
+            <span className="hero__stars">{Array(5).fill(0).map((_, i) => <FaStar key={i} />)}</span>
             <span>500+ Happy Travellers</span>
             <span className="hero__trust-divider">·</span>
             <span>Free Consultation</span>
@@ -208,14 +210,14 @@ export default function Home() {
       {/* ── STATS STRIP ── */}
       <section className="stats-strip">
         <div className="section-wrapper stats-strip__inner">
-          <TrustCounter value={500} suffix="+" label="Happy Travellers" icon="🧳" />
+          <TrustCounter value={500} suffix="+" label="Happy Travellers" icon={<FaSuitcaseRolling />} />
           <div className="stats-divider" />
-          <TrustCounter value={50} suffix="+" label="Destinations Covered" icon="📍" />
+          <TrustCounter value={50} suffix="+" label="Destinations Covered" icon={<FaMapMarkerAlt />} />
           <div className="stats-divider" />
-          <TrustCounter value={10} suffix="+" label="Years of Excellence" icon="🏆" />
+          <TrustCounter value={10} suffix="+" label="Years of Excellence" icon={<FaTrophy />} />
           <div className="stats-divider" />
           <div className="trust-item">
-            <span className="trust-icon">⭐</span>
+            <span className="trust-icon"><FaStar /></span>
             <span className="trust-number">5.0</span>
             <span className="trust-label">Average Rating</span>
           </div>
@@ -349,7 +351,7 @@ export default function Home() {
                   'linear-gradient(135deg, #5C1A1A 0%, #8A2E2E 60%, #B55050 100%)',
                   'linear-gradient(135deg, #3D3500 0%, #8A7520 60%, #C8A84C 100%)',
                 ];
-                const ICONS = ['🏛️','🏖️','🐘','🍃','🧗','🌆','👨‍👩‍👧‍👦'];
+                const ICONS = [<FaLandmark />, <FaUmbrellaBeach />, <GiElephant />, <FaLeaf />, <FaMountain />, <FaCity />, <FaUsers />];
                 const gradient = GRADIENTS[i % GRADIENTS.length];
                 const icon = ICONS[i % ICONS.length];
                 return (
@@ -473,10 +475,10 @@ export default function Home() {
           </div>
           <div className="how-steps">
             {[
-              { n: '01', icon: '🔍', title: 'Browse & Inquire', desc: 'Explore our curated packages and send a free inquiry with your dates and preferences.' },
-              { n: '02', icon: '💬', title: 'Free Consultation', desc: 'We contact you within 24 hours via WhatsApp or Google Meet to discuss your perfect trip.' },
-              { n: '03', icon: '🗺️', title: 'Custom Itinerary', desc: 'We craft a personalised day-by-day plan and confirm pricing based on your choices.' },
-              { n: '04', icon: '✈️', title: 'Journey Begins', desc: 'Arrive in Sri Lanka and let us take care of everything. Your adventure starts here.' },
+              { n: '01', icon: <FaSearch />, title: 'Browse & Inquire', desc: 'Explore our curated packages and send a free inquiry with your dates and preferences.' },
+              { n: '02', icon: <FaComments />, title: 'Free Consultation', desc: 'We contact you within 24 hours via WhatsApp or Google Meet to discuss your perfect trip.' },
+              { n: '03', icon: <FaMap />, title: 'Custom Itinerary', desc: 'We craft a personalised day-by-day plan and confirm pricing based on your choices.' },
+              { n: '04', icon: <FaPlane />, title: 'Journey Begins', desc: 'Arrive in Sri Lanka and let us take care of everything. Your adventure starts here.' },
             ].map((step, i) => (
               <div key={i} className="how-step reveal" style={{ transitionDelay: `${i * 100}ms` }}>
                 <div className="how-step__num">{step.n}</div>
@@ -502,10 +504,10 @@ export default function Home() {
           </div>
           <div className="why-grid">
             {[
-              { icon: '🏛️', title: 'Ancient Heritage', desc: '8 UNESCO World Heritage Sites. Ancient kingdoms dating back 2,500 years.', img: '/Images/Sigiriya_rock_fortress_aerialimages.jpg' },
-              { icon: '🐆', title: 'Wildlife Paradise', desc: 'Highest leopard density on Earth. Wild elephants, blue whales & 400+ bird species.', img: '/Images/Yala_nationa_leopard.jpg' },
-              { icon: '🏖️', title: 'Pristine Beaches', desc: '1,340km of coastline — golden sand, turquoise water and world-class surf.', img: '/Images/Mirissa_beach.jpg' },
-              { icon: '🍃', title: 'Hill Country', desc: 'Mist-covered mountains, scenic train rides, emerald tea estates and waterfalls.', img: '/Images/tea_plantation.jpg' },
+              { icon: <FaLandmark />, title: 'Ancient Heritage', desc: '8 UNESCO World Heritage Sites. Ancient kingdoms dating back 2,500 years.', img: '/Images/Sigiriya_rock_fortress_aerialimages.jpg' },
+              { icon: <FaPaw />, title: 'Wildlife Paradise', desc: 'Highest leopard density on Earth. Wild elephants, blue whales & 400+ bird species.', img: '/Images/Yala_nationa_leopard.jpg' },
+              { icon: <FaUmbrellaBeach />, title: 'Pristine Beaches', desc: '1,340km of coastline — golden sand, turquoise water and world-class surf.', img: '/Images/Mirissa_beach.jpg' },
+              { icon: <FaTree />, title: 'Hill Country', desc: 'Mist-covered mountains, scenic train rides, emerald tea estates and waterfalls.', img: '/Images/tea_plantation.jpg' },
             ].map((item, i) => (
               <div key={i} className="why-card reveal" style={{ transitionDelay: `${i * 90}ms` }}>
                 <div className="why-card__img">
@@ -532,19 +534,19 @@ export default function Home() {
           </div>
           <div className="testimonials-grid">
             {[
-              { name: 'Sarah & James', country: '🇬🇧 United Kingdom', stars: 5, text: 'Absolutely unforgettable. The team arranged everything perfectly — from the Sigiriya sunrise to whale watching at Mirissa. We\'ve already recommended Vibe Ceylon to all our friends.' },
-              { name: 'Thomas Müller', country: '🇩🇪 Germany', stars: 5, text: 'The 8-day cultural tour exceeded every expectation. Our guide was exceptional — knowledgeable, warm, and always going the extra mile. Sri Lanka is breathtaking and Vibe Ceylon made it magical.' },
-              { name: 'Akiko Tanaka', country: '🇯🇵 Japan', stars: 5, text: 'We were nervous about planning a trip to Sri Lanka, but the team made everything seamless. The hill country train ride and Ella Rock hike were the highlights of our year.' },
+              { name: 'Sarah & James', country: 'United Kingdom', stars: 5, text: 'Absolutely unforgettable. The team arranged everything perfectly — from the Sigiriya sunrise to whale watching at Mirissa. We\'ve already recommended Vibe Ceylon to all our friends.' },
+              { name: 'Thomas Müller', country: 'Germany', stars: 5, text: 'The 8-day cultural tour exceeded every expectation. Our guide was exceptional — knowledgeable, warm, and always going the extra mile. Sri Lanka is breathtaking and Vibe Ceylon made it magical.' },
+              { name: 'Akiko Tanaka', country: 'Japan', stars: 5, text: 'We were nervous about planning a trip to Sri Lanka, but the team made everything seamless. The hill country train ride and Ella Rock hike were the highlights of our year.' },
             ].map((t, i) => (
               <div key={i} className="testimonial-card reveal" style={{ transitionDelay: `${i * 110}ms` }}>
                 <div className="testimonial-card__quote">"</div>
                 <p className="testimonial-card__text">{t.text}</p>
-                <div className="testimonial-card__stars">{'★'.repeat(t.stars)}</div>
+                <div className="testimonial-card__stars">{Array(t.stars).fill(0).map((_, i) => <FaStar key={i} />)}</div>
                 <div className="testimonial-card__author">
                   <div className="testimonial-card__avatar">{t.name.charAt(0)}</div>
                   <div>
                     <div className="testimonial-card__name">{t.name}</div>
-                    <div className="testimonial-card__country">{t.country}</div>
+                    <div className="testimonial-card__country"><FaGlobe /> {t.country}</div>
                   </div>
                 </div>
               </div>

@@ -879,7 +879,7 @@
    HOW IT WORKS
 ───────────────────────────────────────── */
 .how-section {
-  padding: var(--space-8) 0;
+  padding: var(--space-17) 0;
   background: var(--teal-deep);
   position: relative;
   overflow: hidden;
@@ -902,6 +902,11 @@
   margin-bottom: var(--space-6);
 }
 
+.how-section__header .section-sub {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .how-steps {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -911,29 +916,29 @@
 
 .how-step {
   text-align: center;
-  padding: var(--space-4) var(--space-3);
+  padding: var(--space-3) var(--space-3);
   position: relative;
 }
 
 .how-step__num {
   font-family: var(--font-serif);
-  font-size: 4rem;
+  font-size: 3rem;
   font-weight: 700;
   color: rgba(200,150,90,0.15);
   line-height: 1;
-  margin-bottom: -12px;
+  margin-bottom: -20px;
   letter-spacing: -0.02em;
 }
 
 .how-step__icon-wrap {
-  width: 64px;
-  height: 64px;
+  width: 56px;
+  height: 56px;
   background: rgba(255,255,255,0.08);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto var(--space-3);
+  margin: 0 auto var(--space-2);
   border: 1px solid rgba(255,255,255,0.12);
   transition: background 0.3s, transform 0.3s var(--ease-spring);
 }
@@ -943,7 +948,10 @@
   transform: scale(1.1);
 }
 
-.how-step__icon { font-size: 1.8rem; }
+.how-step__icon {
+  font-size: 1.6rem;
+  color: var(--sand-light);
+}
 
 .how-step__title {
   font-family: var(--font-serif);
@@ -960,11 +968,12 @@
 
 .how-step__connector {
   position: absolute;
-  top: calc(var(--space-4) + 64px / 2 + 12px);
-  right: -12px;
+  top: calc(var(--space-3) + 28px);
+  left: calc(100% - 12px);
   width: 24px;
   height: 2px;
   background: linear-gradient(to right, rgba(200,150,90,0.4), rgba(200,150,90,0.1));
+  z-index: -1;
 }
 
 /* ─────────────────────────────────────────
