@@ -1,1 +1,5 @@
-
+/* Pages that need top padding to clear the fixed navbar (72px) */
+/* Hero pages (Home) handle this themselves via 100vh */
+.page-padded {
+  padding-top: 72px;
+}

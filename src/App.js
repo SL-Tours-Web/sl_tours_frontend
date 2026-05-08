@@ -7,11 +7,11 @@ import NavBar from "./components/NavBar/NavBar";
 import Home from "./pages/Home/Home";
 import Contact from "./pages/Contact/Contact";
 import Gallery from "./pages/Gallery/Gallery";
-import About from "./pages/about/About";
 import ClientTours from "./pages/Tours/ClientTours";
 import TourCategories from "./pages/TourCategories/TourCategories";
 import CategoryDetail from "./pages/Categories/CategoryDetail";
 import PackageDetail from "./pages/PackageDetail/PackageDetail";
+import About from "./pages/about/About";
 
 // Admin
 import AdminLogin from "./admin/pages/Login";
@@ -21,13 +21,12 @@ import AdminGallery from "./admin/pages/Gallery";
 import AdminTours from "./admin/pages/AdminTours";
 import AdminPackages from "./admin/AdminPages/AdminPackages";
 import AdminCategories from "./admin/AdminPages/AdminCategories";
+import AdminInquiries from "./admin/AdminPages/AdminInquiries";
 import Destinations from "./admin/pages/Destinations";
 import PopularDestinations from "./pages/Destinations/PopularDestinations";
 
 // Styles
 import "./App.css";
-import "./pages/Home/Home.css";
-import "./pages/Contact/Contact.css";
 
 function App() {
   return (
@@ -132,6 +131,15 @@ function App() {
           element={
             <ProtectedRoute>
               <AdminGallery />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/admin/inquiries"
+          element={
+            <ProtectedRoute>
+              <AdminInquiries />
             </ProtectedRoute>
           }
         />

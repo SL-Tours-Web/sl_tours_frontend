@@ -1,94 +1,184 @@
+/* ============================================
+   POPULAR DESTINATIONS — TROPICAL LUXURY
+   ============================================ */
+
 .popular-destinations-container {
-  padding: 2rem;
-  font-family: Arial, sans-serif;
+  padding-top: 76px;
+  min-height: 100vh;
+  background: var(--cream);
 }
 
+/* ── Header ── */
 .title {
+  font-family: var(--font-serif);
   text-align: center;
-  font-size: 2.5rem;
-  margin-bottom: 0.5rem;
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: white;
+  margin-bottom: var(--space-1);
+  line-height: 1.15;
 }
 
 .subtitle {
   text-align: center;
-  color: #555;
-  margin-bottom: 2.5rem;
+  color: rgba(255,255,255,0.72);
+  font-size: 1.05rem;
+  margin-bottom: 0;
+  line-height: 1.7;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
+.destinations-page-header {
+  background: var(--teal-deep);
+  padding: var(--space-7) var(--space-4) var(--space-6);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.destinations-page-header::before {
+  content: '';
+  position: absolute;
+  top: -40%;
+  right: -5%;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* ── Grid ── */
 .popular-destinations-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--space-3);
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: var(--space-6) var(--space-4);
 }
 
+/* ── Card ── */
 .popular-destination-card {
-  background: white;
-  border-radius: 14px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xs);
   overflow: hidden;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: transform 0.35s var(--ease-spring), box-shadow 0.3s var(--ease);
   display: flex;
   flex-direction: column;
+  border: 1px solid var(--border-light);
+  cursor: pointer;
 }
 
 .popular-destination-card:hover {
-  transform: translateY(-7px) scale(1.03);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-md);
+  border-color: transparent;
+}
+
+.popular-destination-card:hover .popular-destination-image {
+  transform: scale(1.07);
+}
+
+.popular-destination-image-wrap {
+  height: 220px;
+  overflow: hidden;
 }
 
 .popular-destination-image {
   width: 100%;
-  height: 180px;
+  height: 220px;
   object-fit: cover;
+  transition: transform 0.55s var(--ease);
+  display: block;
 }
 
 .popular-destination-info {
-  padding: 1.1rem 1rem 1.2rem 1rem;
+  padding: var(--space-3) var(--space-3) var(--space-3);
   flex: 1;
   display: flex;
   flex-direction: column;
 }
 
 .popular-destination-info h2 {
-  margin: 0 0 0.2rem 0;
-  font-size: 1.3rem;
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  color: var(--text-dark);
+  margin: 0 0 4px;
+  line-height: 1.25;
 }
 
 .location {
-  color: #0077b6;
-  font-weight: 500;
-  margin-bottom: 0.5rem;
+  color: var(--teal-mid);
+  font-weight: 600;
+  font-size: 0.83rem;
+  margin-bottom: var(--space-2);
+  letter-spacing: 0.02em;
 }
 
 .desc {
-  color: #555;
-  margin-bottom: 0.7rem;
+  color: var(--text-light);
+  font-size: 0.88rem;
+  line-height: 1.65;
+  margin-bottom: var(--space-2);
 }
 
 .highlights {
   list-style: none;
   padding: 0;
-  margin: 0 0 1rem 0;
-  color: #444;
-  font-size: 0.97rem;
+  margin: 0 0 var(--space-3);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
 .highlights li {
-  margin-bottom: 0.2rem;
+  font-size: 0.83rem;
+  color: var(--text-mid);
+  padding: 2px 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.highlights li::before {
+  content: '✓';
+  color: var(--teal-mid);
+  font-weight: 700;
+  flex-shrink: 0;
 }
 
 .explore-btn {
   align-self: flex-start;
-  padding: 8px 16px;
-  background: #0077b6;
+  padding: 10px 20px;
+  background: var(--teal-deep);
   color: white;
   border: none;
-  border-radius: 6px;
+  border-radius: var(--radius-full);
+  font-family: var(--font-sans);
+  font-size: 0.87rem;
+  font-weight: 600;
   cursor: pointer;
-  font-size: 0.95rem;
-  transition: background 0.2s;
+  transition: background 0.2s, transform 0.15s;
+  margin-top: auto;
+  letter-spacing: 0.01em;
 }
 
 .explore-btn:hover {
-  background: #023e8a;
+  background: var(--teal-mid);
+  transform: translateY(-1px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .popular-destinations-grid {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    padding: var(--space-4) var(--space-3);
+  }
+}
+
+@media (max-width: 480px) {
+  .popular-destinations-grid { grid-template-columns: 1fr; }
 }

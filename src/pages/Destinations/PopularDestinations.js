@@ -143,12 +143,16 @@ const popularDestinations = [
 const PopularDestinations = () => {
   return (
     <div className="popular-destinations-container">
-      <h1 className="title">Popular Destinations</h1>
-      <p className="subtitle">Explore Sri Lanka's most iconic places</p>
+      <div className="destinations-page-header">
+        <h1 className="title">Popular Destinations</h1>
+        <p className="subtitle">Explore Sri Lanka's most iconic and breathtaking places</p>
+      </div>
       <div className="popular-destinations-grid">
         {popularDestinations.map((dest) => (
           <div key={dest.id} className="popular-destination-card">
-            <img src={dest.image} alt={dest.name} className="popular-destination-image" />
+            <div className="popular-destination-image-wrap">
+              <img src={dest.image} alt={dest.name} className="popular-destination-image" loading="lazy" />
+            </div>
             <div className="popular-destination-info">
               <h2>{dest.name}</h2>
               <p className="location">{dest.location}</p>
@@ -166,5 +170,6 @@ const PopularDestinations = () => {
     </div>
   );
 };
+
 
 export default PopularDestinations;

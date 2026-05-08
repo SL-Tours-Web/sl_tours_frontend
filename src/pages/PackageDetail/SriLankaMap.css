@@ -1,0 +1,171 @@
+/* ── SRI LANKA MAP ── */
+.sl-map-wrap {
+  background: white;
+  border-radius: 24px;
+  padding: 36px;
+  margin-bottom: 32px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+  border: 1px solid rgba(45,106,79,0.1);
+}
+
+.sl-map-label {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.sl-map-eyebrow {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold, #c9a84c);
+  margin-bottom: 6px;
+}
+
+.sl-map-title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: 1.6rem;
+  color: var(--green-deep, #1a4731);
+  margin: 0;
+}
+
+.sl-map-container {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+.sl-map-svg {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 8px 24px rgba(0,0,0,0.1));
+}
+
+/* Route line draw animation */
+.sl-route-line {
+  animation: drawRoute 2s ease-out 0.2s forwards;
+}
+
+@keyframes drawRoute {
+  to { stroke-dashoffset: 0; }
+}
+
+/* City pulse animation */
+.sl-pulse {
+  animation: mapPulse 2s ease-out infinite;
+  transform-origin: center;
+}
+
+@keyframes mapPulse {
+  0%   { r: 5; opacity: 0.6; }
+  70%  { r: 14; opacity: 0; }
+  100% { r: 5; opacity: 0; }
+}
+
+/* City dot pop-in */
+.sl-city-dot {
+  animation: cityPop 0.4s cubic-bezier(.22,.68,0,1.4) both;
+}
+
+@keyframes cityPop {
+  from { opacity: 0; transform: scale(0); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.sl-city-label {
+  animation: labelFade 0.35s ease both;
+}
+
+@keyframes labelFade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Legend */
+.sl-map-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 380px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.sl-map-legend::-webkit-scrollbar { width: 4px; }
+.sl-map-legend::-webkit-scrollbar-track { background: #f0f0f0; border-radius: 4px; }
+.sl-map-legend::-webkit-scrollbar-thumb { background: #c9a84c; border-radius: 4px; }
+
+.sl-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: #f9f7f2;
+  border: 1px solid transparent;
+  opacity: 0;
+  transform: translateX(-12px);
+  transition: opacity 0.35s ease, transform 0.35s ease, border-color 0.2s, background 0.2s;
+}
+
+.sl-legend-item.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.sl-legend-item:hover {
+  background: #f0f8f4;
+  border-color: rgba(45,106,79,0.2);
+}
+
+.sl-legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  border: 2px solid white;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+}
+
+.sl-legend-day {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--gold, #c9a84c);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  min-width: 38px;
+}
+
+.sl-legend-name {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--green-deep, #1a4731);
+}
+
+@media (max-width: 700px) {
+  .sl-map-container {
+    grid-template-columns: 1fr;
+  }
+
+  .sl-map-svg {
+    max-width: 240px;
+    margin: 0 auto;
+    display: block;
+  }
+
+  .sl-map-legend {
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-height: none;
+  }
+
+  .sl-legend-item {
+    flex: 0 1 calc(50% - 5px);
+  }
+
+  .sl-map-wrap {
+    padding: 24px 20px;
+  }
+}

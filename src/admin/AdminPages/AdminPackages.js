@@ -1,162 +1,171 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import api, { API_URL } from "../../config/api";
 import AdminLayout from "../AdminLayout";
 import "./AdminPackages.css";
+
+const emptyPackage = {
+  name: "", category: "", duration: "", transport: "", accommodation: "",
+  description: "", itinerary: [], highlights: [], includes: [], excludes: [],
+  isFeatured: false,
+};
+
+function TagInput({ label, values, onChange, placeholder }) {
+  const [input, setInput] = useState("");
+  const add = () => {
+    const val = input.trim();
+    if (val && !values.includes(val)) onChange([...values, val]);
+    setInput("");
+  };
+  const remove = (i) => onChange(values.filter((_, idx) => idx !== i));
+  return (
+    <div className="form-group">
+      <label>{label}</label>
+      <div className="tag-input-row">
+        <input value={input} onChange={e => setInput(e.target.value)}
+          onKeyDown={e => { if (e.key === 'Enter') { e.preventDefault(); add(); } }}
+          placeholder={placeholder} />
+        <button type="button" className="btn btn-secondary btn-sm" onClick={add}>Add</button>
+      </div>
+      <div className="tag-list">
+        {values.map((v, i) => (
+          <span key={i} className="tag-item">{v}
+            <button type="button" onClick={() => remove(i)}>×</button>
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 function AdminPackages() {
   const [packages, setPackages] = useState([]);
   const [categories, setCategories] = useState([]);
-  const [newPackage, setNewPackage] = useState({
-    name: "",
-    category: "",
-    duration: "",
-    transport: "",
-    accommodation: "",
-    description: "",
-    itinerary: [],
-    destinations: [],
-  });
+  const [form, setForm] = useState(emptyPackage);
   const [editingId, setEditingId] = useState(null);
+  const [imageFile, setImageFile] = useState(null);
+  const [imagePreview, setImagePreview] = useState(null);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const token = localStorage.getItem("adminToken");
-  const authHeader = { headers: { Authorization: `Bearer ${token}` } };
-
-  // Fetch categories and packages
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [categoriesRes, packagesRes] = await Promise.all([
-          axios.get("http://localhost:5000/api/categories"),
-          axios.get("http://localhost:5000/api/packages"),
+        const [catRes, pkgRes] = await Promise.all([
+          api.get("/api/categories"),
+          api.get("/api/packages"),
         ]);
-        setCategories(categoriesRes.data);
-        setPackages(packagesRes.data);
+        setCategories(catRes.data);
+        setPackages(pkgRes.data);
       } catch (err) {
-        console.error("Error fetching data", err);
-        setError("Failed to fetch categories/packages");
+        setError("Failed to fetch data");
       }
     };
     fetchData();
   }, []);
 
-  // Reset form
   const resetForm = () => {
-    setNewPackage({
-      name: "",
-      category: "",
-      duration: "",
-      transport: "",
-      accommodation: "",
-      description: "",
-      itinerary: [],
-      destinations: [],
-    });
+    setForm(emptyPackage);
     setEditingId(null);
+    setImageFile(null);
+    setImagePreview(null);
     setError("");
     setSuccess("");
   };
 
-  // Update itinerary day
-  const updateItineraryDay = (dayIndex, field, value) => {
-    const updated = [...newPackage.itinerary];
-    updated[dayIndex] = { ...updated[dayIndex], [field]: value };
-    setNewPackage({ ...newPackage, itinerary: updated });
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    setImageFile(file);
+    setImagePreview(URL.createObjectURL(file));
   };
 
-  // Add itinerary day
-  const addItineraryDay = () => {
-    const daysCount = newPackage.itinerary.length + 1;
-    setNewPackage({
-      ...newPackage,
-      itinerary: [
-        ...newPackage.itinerary,
-        { day: daysCount, title: "", activities: "" },
-      ],
-    });
+  const updateItinerary = (i, field, value) => {
+    const updated = [...form.itinerary];
+    updated[i] = { ...updated[i], [field]: value };
+    setForm({ ...form, itinerary: updated });
   };
 
-  // Remove itinerary day
-  const removeItineraryDay = (dayIndex) => {
-    setNewPackage({
-      ...newPackage,
-      itinerary: newPackage.itinerary.filter((_, i) => i !== dayIndex),
-    });
+  const addDay = () => {
+    setForm({ ...form, itinerary: [...form.itinerary, { day: form.itinerary.length + 1, title: "", activities: "" }] });
   };
 
-  // Save package
-  const handleSavePackage = async (e) => {
+  const removeDay = (i) => {
+    setForm({ ...form, itinerary: form.itinerary.filter((_, idx) => idx !== i) });
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setError("");
-    setSuccess("");
-
-    if (!newPackage.name || !newPackage.category || !newPackage.duration) {
-      setError("Please fill in all required fields");
-      return;
+    setError(""); setSuccess(""); setLoading(true);
+    if (!form.name || !form.category || !form.duration) {
+      setError("Name, category and duration are required");
+      setLoading(false); return;
     }
-
     try {
-      const payload = {
-        ...newPackage,
-        destinations: newPackage.destinations.filter(d => d.trim()),
-      };
+      const data = new FormData();
+      data.append("name", form.name);
+      data.append("category", form.category);
+      data.append("duration", form.duration);
+      data.append("transport", form.transport);
+      data.append("accommodation", form.accommodation);
+      data.append("description", form.description);
+      data.append("isFeatured", form.isFeatured);
+      data.append("itinerary", JSON.stringify(form.itinerary));
+      form.highlights.forEach(h => data.append("highlights", h));
+      form.includes.forEach(h => data.append("includes", h));
+      form.excludes.forEach(h => data.append("excludes", h));
+      if (imageFile) data.append("image", imageFile);
 
+      const config = { headers: { "Content-Type": "multipart/form-data" } };
+      let res;
       if (editingId) {
-        const res = await axios.put(
-          `http://localhost:5000/api/packages/${editingId}`,
-          payload,
-          authHeader
-        );
+        res = await api.put(`/api/packages/${editingId}`, data, config);
         setPackages(packages.map(p => p._id === editingId ? res.data : p));
         setSuccess("Package updated successfully");
       } else {
-        const res = await axios.post(
-          "http://localhost:5000/api/packages",
-          payload,
-          authHeader
-        );
+        res = await api.post("/api/packages", data, config);
         setPackages([res.data, ...packages]);
         setSuccess("Package created successfully");
       }
       resetForm();
     } catch (err) {
-      console.error("Error saving package", err);
       setError(err.response?.data?.message || "Failed to save package");
     }
+    setLoading(false);
   };
 
-  // Delete package
-  const handleDeletePackage = async (id) => {
-    if (!window.confirm("Are you sure you want to delete this package?")) return;
+  const handleDelete = async (id) => {
+    if (!window.confirm("Delete this package?")) return;
     try {
-      await axios.delete(`http://localhost:5000/api/packages/${id}`, authHeader);
+      await api.delete(`/api/packages/${id}`);
       setPackages(packages.filter(p => p._id !== id));
-      setSuccess("Package deleted successfully");
+      setSuccess("Package deleted");
     } catch (err) {
-      console.error("Error deleting package", err);
-      setError(err.response?.data?.message || "Failed to delete package");
+      setError("Failed to delete package");
     }
   };
 
-  // Edit package
-  const handleEditPackage = (pkg) => {
-    setNewPackage({
-      name: pkg.name,
+  const handleEdit = (pkg) => {
+    setForm({
+      name: pkg.name || "",
       category: pkg.category?._id || pkg.category || "",
-      duration: pkg.duration,
+      duration: pkg.duration || "",
       transport: pkg.transport || "",
       accommodation: pkg.accommodation || "",
       description: pkg.description || "",
       itinerary: pkg.itinerary || [],
-      destinations: pkg.destinations || [],
+      highlights: pkg.highlights || [],
+      includes: pkg.includes || [],
+      excludes: pkg.excludes || [],
+      isFeatured: pkg.isFeatured || false,
     });
     setEditingId(pkg._id);
+    setImagePreview(pkg.image ? `${API_URL}${pkg.image}` : null);
+    setImageFile(null);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const getCategoryName = (categoryId) => {
-    return categories.find(c => c._id === categoryId)?.name || "N/A";
-  };
+  const getCategoryName = (id) => categories.find(c => c._id === id)?.name || "—";
 
   return (
     <AdminLayout>
@@ -166,138 +175,102 @@ function AdminPackages() {
         {error && <div className="alert alert-error">{error}</div>}
         {success && <div className="alert alert-success">{success}</div>}
 
-        {/* Form */}
-        <form onSubmit={handleSavePackage} className="package-form">
+        <form onSubmit={handleSubmit} className="package-form">
           <h2>{editingId ? "Edit Package" : "Create New Package"}</h2>
 
           <div className="form-row">
             <div className="form-group">
               <label>Category *</label>
-              <select
-                value={newPackage.category}
-                onChange={(e) => setNewPackage({ ...newPackage, category: e.target.value })}
-              >
+              <select value={form.category} onChange={e => setForm({ ...form, category: e.target.value })}>
                 <option value="">Select Category</option>
-                {categories.map(cat => (
-                  <option key={cat._id} value={cat._id}>{cat.name}</option>
-                ))}
+                {categories.map(c => <option key={c._id} value={c._id}>{c.name}</option>)}
               </select>
             </div>
-
             <div className="form-group">
               <label>Package Name *</label>
-              <input
-                type="text"
-                value={newPackage.name}
-                onChange={(e) => setNewPackage({ ...newPackage, name: e.target.value })}
-                placeholder="e.g., 5-Day Cultural Tour"
-              />
+              <input value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} placeholder="e.g., 8-Day Cultural Triangle" />
             </div>
           </div>
 
           <div className="form-row">
             <div className="form-group">
               <label>Duration *</label>
-              <input
-                type="text"
-                value={newPackage.duration}
-                onChange={(e) => setNewPackage({ ...newPackage, duration: e.target.value })}
-                placeholder="e.g., 5 days 4 nights"
-              />
+              <input value={form.duration} onChange={e => setForm({ ...form, duration: e.target.value })} placeholder="e.g., 8 Days / 7 Nights" />
+            </div>
+            <div className="form-group">
+              <label>Transport</label>
+              <input value={form.transport} onChange={e => setForm({ ...form, transport: e.target.value })} placeholder="e.g., Private AC Vehicle" />
             </div>
           </div>
 
           <div className="form-row">
             <div className="form-group">
-              <label>Transport</label>
-              <input
-                type="text"
-                value={newPackage.transport}
-                onChange={(e) => setNewPackage({ ...newPackage, transport: e.target.value })}
-                placeholder="e.g., Coach, Van"
-              />
-            </div>
-
-            <div className="form-group">
               <label>Accommodation</label>
-              <input
-                type="text"
-                value={newPackage.accommodation}
-                onChange={(e) => setNewPackage({ ...newPackage, accommodation: e.target.value })}
-                placeholder="e.g., 3-star Hotel"
-              />
+              <input value={form.accommodation} onChange={e => setForm({ ...form, accommodation: e.target.value })} placeholder="e.g., Flexible — confirmed after consultation" />
+            </div>
+            <div className="form-group featured-toggle">
+              <label>
+                <input type="checkbox" checked={form.isFeatured} onChange={e => setForm({ ...form, isFeatured: e.target.checked })} />
+                &nbsp; Feature on Homepage
+              </label>
             </div>
           </div>
 
           <div className="form-group">
             <label>Description</label>
-            <textarea
-              value={newPackage.description}
-              onChange={(e) => setNewPackage({ ...newPackage, description: e.target.value })}
-              placeholder="Brief description of the tour..."
-              rows="3"
-            />
+            <textarea value={form.description} onChange={e => setForm({ ...form, description: e.target.value })} rows="4" placeholder="Describe this tour package..." />
           </div>
 
-          {/* Itinerary Builder */}
+          <div className="form-group">
+            <label>Cover Image</label>
+            <input type="file" accept="image/*" onChange={handleImageChange} />
+            {imagePreview && (
+              <div className="image-preview">
+                <img src={imagePreview} alt="Preview" />
+              </div>
+            )}
+          </div>
+
+          <TagInput label="Highlights (press Enter or click Add)" values={form.highlights}
+            onChange={v => setForm({ ...form, highlights: v })} placeholder="e.g., Sigiriya Rock Fortress" />
+
+          <TagInput label="What's Included" values={form.includes}
+            onChange={v => setForm({ ...form, includes: v })} placeholder="e.g., Daily Breakfast" />
+
+          <TagInput label="What's Excluded" values={form.excludes}
+            onChange={v => setForm({ ...form, excludes: v })} placeholder="e.g., International Flights" />
+
           <div className="itinerary-section">
             <h3>Day-by-Day Itinerary</h3>
-            {newPackage.itinerary.map((day, index) => (
-              <div key={index} className="itinerary-day">
+            {form.itinerary.map((day, i) => (
+              <div key={i} className="itinerary-day">
                 <div className="itinerary-day-header">
                   <h4>Day {day.day}</h4>
-                  <button
-                    type="button"
-                    className="btn btn-sm btn-delete"
-                    onClick={() => removeItineraryDay(index)}
-                  >
-                    Remove
-                  </button>
+                  <button type="button" className="btn btn-sm btn-delete" onClick={() => removeDay(i)}>Remove</button>
                 </div>
                 <div className="form-row">
                   <div className="form-group">
                     <label>Day Title</label>
-                    <input
-                      type="text"
-                      value={day.title}
-                      onChange={(e) => updateItineraryDay(index, "title", e.target.value)}
-                      placeholder="e.g., Colombo City Tour"
-                    />
+                    <input value={day.title} onChange={e => updateItinerary(i, "title", e.target.value)} placeholder="e.g., Sigiriya Rock & Village Life" />
                   </div>
                 </div>
                 <div className="form-group">
                   <label>Activities & Details</label>
-                  <textarea
-                    value={day.activities}
-                    onChange={(e) => updateItineraryDay(index, "activities", e.target.value)}
-                    placeholder="Describe all activities for this day..."
-                    rows="3"
-                  />
+                  <textarea value={day.activities} onChange={e => updateItinerary(i, "activities", e.target.value)} rows="4" placeholder="Describe the day's activities in detail..." />
                 </div>
               </div>
             ))}
-            <button
-              type="button"
-              className="btn btn-secondary"
-              onClick={addItineraryDay}
-            >
-              + Add Day to Itinerary
-            </button>
+            <button type="button" className="btn btn-secondary" onClick={addDay}>+ Add Day</button>
           </div>
 
           <div className="form-actions">
-            <button type="submit" className="btn btn-primary">
-              {editingId ? "Update Package" : "Create Package"}
+            <button type="submit" className="btn btn-primary" disabled={loading}>
+              {loading ? "Saving..." : editingId ? "Update Package" : "Create Package"}
             </button>
-            {editingId && (
-              <button type="button" className="btn btn-secondary" onClick={resetForm}>
-                Cancel
-              </button>
-            )}
+            {editingId && <button type="button" className="btn btn-secondary" onClick={resetForm}>Cancel</button>}
           </div>
         </form>
 
-        {/* List */}
         <div className="package-list">
           <h2>Tour Packages ({packages.length})</h2>
           {packages.length === 0 ? (
@@ -306,33 +279,31 @@ function AdminPackages() {
             <table className="packages-table">
               <thead>
                 <tr>
+                  <th>Image</th>
                   <th>Name</th>
                   <th>Category</th>
                   <th>Duration</th>
                   <th>Days</th>
+                  <th>Featured</th>
                   <th>Actions</th>
                 </tr>
               </thead>
               <tbody>
-                {packages.map((pkg) => (
+                {packages.map(pkg => (
                   <tr key={pkg._id}>
-                    <td>{pkg.name}</td>
-                    <td>{getCategoryName(pkg.category)}</td>
+                    <td>
+                      {pkg.image
+                        ? <img src={`${API_URL}${pkg.image}`} alt={pkg.name} style={{ width: 60, height: 40, objectFit: "cover", borderRadius: 4 }} />
+                        : <span style={{ color: "#999" }}>—</span>}
+                    </td>
+                    <td><strong>{pkg.name}</strong></td>
+                    <td>{getCategoryName(pkg.category?._id || pkg.category)}</td>
                     <td>{pkg.duration}</td>
                     <td>{pkg.itinerary?.length || 0}</td>
+                    <td>{pkg.isFeatured ? "⭐ Yes" : "—"}</td>
                     <td>
-                      <button
-                        className="btn btn-sm btn-edit"
-                        onClick={() => handleEditPackage(pkg)}
-                      >
-                        Edit
-                      </button>
-                      <button
-                        className="btn btn-sm btn-delete"
-                        onClick={() => handleDeletePackage(pkg._id)}
-                      >
-                        Delete
-                      </button>
+                      <button className="btn btn-sm btn-edit" onClick={() => handleEdit(pkg)}>Edit</button>
+                      <button className="btn btn-sm btn-delete" onClick={() => handleDelete(pkg._id)}>Delete</button>
                     </td>
                   </tr>
                 ))}

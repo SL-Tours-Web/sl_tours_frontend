@@ -21,37 +21,41 @@ export default function TourCategories() {
         setLoading(false);
       }
     };
-
     fetchCategories();
   }, []);
 
+  const header = (
+    <div className="tour-categories-header">
+      <h1>Explore Our Tour Categories</h1>
+      <p className="subtitle">Choose your adventure and discover Sri Lanka's best experiences</p>
+    </div>
+  );
+
   if (loading) {
     return (
-      <section className="tour-categories">
-        <h1>Explore Our Tour Categories</h1>
+      <div className="tour-categories">
+        {header}
         <div className="categories-container">
           <p className="loading-message">Loading categories...</p>
         </div>
-      </section>
+      </div>
     );
   }
 
   if (error) {
     return (
-      <section className="tour-categories">
-        <h1>Explore Our Tour Categories</h1>
+      <div className="tour-categories">
+        {header}
         <div className="categories-container">
           <p className="error-message">{error}</p>
         </div>
-      </section>
+      </div>
     );
   }
 
   return (
-    <section className="tour-categories">
-      <h1>Explore Our Tour Categories</h1>
-      <p className="subtitle">Choose your adventure and discover Sri Lanka</p>
-
+    <div className="tour-categories">
+      {header}
       <div className="categories-container">
         {categories && categories.length > 0 ? (
           categories.map((category) => (
@@ -65,9 +69,7 @@ export default function TourCategories() {
                 <p className="category-description">
                   {category.description || "Discover amazing tours in this category"}
                 </p>
-                <button className="view-btn">
-                  Explore Tours →
-                </button>
+                <button className="view-btn">Explore Tours →</button>
               </div>
             </div>
           ))
@@ -75,6 +77,6 @@ export default function TourCategories() {
           <p className="no-categories">No tour categories available at the moment.</p>
         )}
       </div>
-    </section>
+    </div>
   );
 }
