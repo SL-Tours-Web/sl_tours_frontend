@@ -174,11 +174,11 @@ const NavBar = () => {
 
           {/* Logo */}
           <a href="/" className="navbar__logo">
-            <span className="navbar__logo-mark">V</span>
-            <span className="navbar__logo-text">
-              <span className="navbar__logo-main">Vibe Ceylon</span>
-              <span className="navbar__logo-sub">Tours</span>
-            </span>
+            <img
+              src="/Images/logo.png"
+              alt="Sere Lanka Tours"
+              className="navbar__logo-image"
+            />
           </a>
 
           {/* Desktop nav */}
