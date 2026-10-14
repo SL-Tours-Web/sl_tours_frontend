@@ -1,5 +1,5 @@
 import React from 'react';
-import './About.css';
+import './about.css';
 
 const VALUE_ICONS = [
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2C8 2 5 5 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-4-3-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>,
@@ -23,7 +23,7 @@ const About = () => {
       <section className="about-hero">
         <div
           className="about-hero__bg"
-          style={{ backgroundImage: "url('/Images/Sigiriya_rock_fortress_aerialimages.jpg')" }}
+          style={{ backgroundImage: "url('public/Images/nine arche.jpg')" }}
         />
         <div className="about-hero__overlay" />
         <div className="about-hero__content section-wrapper">
@@ -54,7 +54,7 @@ const About = () => {
       <section className="about-who">
         <div className="section-wrapper about-who__inner">
           <div className="about-who__image">
-            <img src="/Images/home.jpg" alt="Vibe Ceylon Tours team in Sri Lanka" />
+            <img src="/Images/home.jpg" alt="Sere Lanka Tours team in Sri Lanka" />
             <div className="about-who__badge">
               <span className="badge-num">10+</span>
               <span className="badge-txt">Years of Excellence</span>
@@ -64,7 +64,7 @@ const About = () => {
             <span className="section-label">Who We Are</span>
             <h2 className="section-title">Built on a Passion<br />for Sri Lanka</h2>
             <p className="about-who__desc">
-              Vibe Ceylon Tours is Sri Lanka's leading destination management company,
+              Sere Lanka Tours is Sri Lanka's leading destination management company,
               born from a deep love for this extraordinary island. Our team of experienced
               local guides and travel specialists have spent years exploring every corner of
               Sri Lanka — from the ancient fortresses of the Cultural Triangle to the wild
@@ -133,7 +133,7 @@ const About = () => {
               </div>
               <div>
                 <strong>Email</strong>
-                <p><a href="mailto:info@vibeceylontours.com">info@vibeceylontours.com</a></p>
+                <p><a href="mailto:info@serelankatours.com">info@serelankatours.com</a></p>
               </div>
             </div>
             <div className="about-cta__buttons">
