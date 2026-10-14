@@ -6,7 +6,22 @@
 }
 
 .sidebar .logo {
-  color: rgb(183, 68, 144);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 24px;
+  color: white;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.sidebar .logo img {
+  display: block;
+  width: 112px;
+  height: 112px;
+  object-fit: contain;
+  border-radius: 8px;
 }
 
 .sidebar a {
