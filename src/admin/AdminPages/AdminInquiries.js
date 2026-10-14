@@ -54,7 +54,7 @@ export default function AdminInquiries() {
 
   const waLink = (num) => `https://wa.me/${num.replace(/\D/g, "")}`;
   const waGreeting = (name, pkg) =>
-    `https://wa.me/${WHATSAPP_NUMBER.replace(/\D/g, "")}?text=${encodeURIComponent(`Hi ${name}, thank you for your interest in ${pkg}! We're Vibe Ceylon Tours — happy to help plan your perfect Sri Lanka journey. 🌴`)}`;
+    `https://wa.me/${WHATSAPP_NUMBER.replace(/\D/g, "")}?text=${encodeURIComponent(`Hi ${name}, thank you for your interest in ${pkg}! We're Sere Lanka Tours — happy to help plan your perfect Sri Lanka journey. 🌴`)}`;
 
   return (
     <AdminLayout>
@@ -139,7 +139,7 @@ export default function AdminInquiries() {
                         <a href={waLink(inq.whatsapp)} target="_blank" rel="noreferrer" className="btn btn-wa">
                           Open WhatsApp
                         </a>
-                        <a href={`mailto:${inq.email}?subject=Your Sri Lanka Tour Inquiry — Vibe Ceylon Tours&body=Hi ${inq.fullName},%0A%0AThank you for your interest in ${inq.packageInterested}.%0A%0AWe would love to help plan your perfect Sri Lanka journey!%0A%0ABest regards,%0AVibe Ceylon Tours`}
+                        <a href={`mailto:${inq.email}?subject=Your Sri Lanka Tour Inquiry — Sere Lanka Tours&body=Hi ${inq.fullName},%0A%0AThank you for your interest in ${inq.packageInterested}.%0A%0AWe would love to help plan your perfect Sri Lanka journey!%0A%0ABest regards,%0ASere Lanka Tours`}
                           className="btn btn-email">
                           Send Email
                         </a>
