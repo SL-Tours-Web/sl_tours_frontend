@@ -1,5 +1,5 @@
 /* ============================================
-   VIBE CEYLON TOURS — TROPICAL LUXURY DESIGN SYSTEM
+   SERE LANKA TOURS — TROPICAL LUXURY DESIGN SYSTEM
    ============================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap');
@@ -308,4 +308,68 @@ input, select, textarea { font-family: var(--font-sans); }
   color: rgba(255,255,255,0.8);
   font-size: 1.1rem;
   max-width: 500px;
+}
+
+/* ── Shared route and scroll motion ── */
+@keyframes routeEnter {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.site-route {
+  animation: routeEnter 0.45s var(--ease-out);
+}
+
+.motion-reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.65s var(--ease), transform 0.65s var(--ease);
+}
+
+.motion-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.motion-reveal.motion-card {
+  transition: opacity 0.65s var(--ease), transform 0.25s var(--ease);
+}
+
+.motion-card:hover {
+  transform: translateY(-5px);
+}
+
+.motion-reveal:nth-child(2) { transition-delay: 70ms; }
+.motion-reveal:nth-child(3) { transition-delay: 140ms; }
+.motion-reveal:nth-child(4) { transition-delay: 210ms; }
+.motion-reveal:nth-child(5) { transition-delay: 280ms; }
+
+button:not(:disabled):hover,
+a[class*="btn"]:hover {
+  filter: brightness(1.04);
+  transform: translateY(-2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
+  .site-route {
+    animation: none;
+  }
+
+  .motion-reveal,
+  .motion-reveal.is-visible,
+  .motion-card:hover,
+  .reveal,
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+    animation: none;
+    transition: none;
+  }
+
+  button:not(:disabled),
+  a[class*="btn"] {
+    transition: none;
+  }
 }
