@@ -50,33 +50,60 @@ function AdminTours() {
   };
 
   return (
-    <AdminLayout> {/* Wrap everything inside AdminLayout */}
-      <div>
-        <h1>Admin: Manage Tours</h1>
+    <AdminLayout>
+      <div className="manage-tours-page">
+        <header className="manage-tours-header">
+          <div>
+            <span className="manage-tours-eyebrow">Tour management</span>
+            <h1>Manage Tours</h1>
+            <p>Create and manage the tours available to your guests.</p>
+          </div>
+        </header>
 
-        <form onSubmit={handleAddTour}>
+        <form className="manage-tours-form" onSubmit={handleAddTour}>
           <input
             type="text"
             value={newTour.title}
             onChange={(e) => setNewTour({ ...newTour, title: e.target.value })}
             placeholder="Tour Title"
+            aria-label="Tour title"
           />
           <textarea
             value={newTour.description}
             onChange={(e) => setNewTour({ ...newTour, description: e.target.value })}
             placeholder="Tour Description"
+            aria-label="Tour description"
           />
-          <button type="submit">Add Tour</button>
+          <button className="manage-tours-add" type="submit">Add Tour</button>
         </form>
 
-        <h2>Tour List</h2>
-        <ul>
+        <div className="manage-tours-list-header">
+          <h2>Tour List</h2>
+          <span>{tours.length} {tours.length === 1 ? "tour" : "tours"}</span>
+        </div>
+        <ul className="manage-tours-list">
           {tours.map(tour => (
-            <li key={tour._id}>
-              <h3>{tour.title}</h3>
-              <p>{tour.description}</p>
-              <button onClick={() => handleDeleteTour(tour._id)}>Delete</button>
-              <button onClick={() => navigate(`/edit-tour/${tour._id}`)}>Edit</button>  {/* Use navigate */}
+            <li className="manage-tour-card" key={tour._id}>
+              <div className="manage-tour-info">
+                <h3>{tour.title}</h3>
+                <p>{tour.description || "No description provided."}</p>
+              </div>
+              <div className="manage-tour-actions">
+                <button
+                  className="manage-tour-edit"
+                  type="button"
+                  onClick={() => navigate(`/edit-tour/${tour._id}`)}
+                >
+                  Edit
+                </button>
+                <button
+                  className="manage-tour-delete"
+                  type="button"
+                  onClick={() => handleDeleteTour(tour._id)}
+                >
+                  Delete
+                </button>
+              </div>
             </li>
           ))}
         </ul>

@@ -1,100 +1,260 @@
-/* Container for the AdminTours Page */
-.admin-tours-container {
-  font-family: Arial, sans-serif;
-  padding: 20px;
-  background-color: #f4f7fc;
-  max-width: 900px;
+.manage-tours-page {
+  width: min(100%, 1080px);
   margin: 0 auto;
+  color: #202c31;
 }
 
-/* Title Styles */
-.admin-tours-container h1 {
-  font-size: 2rem;
-  color: #333;
-  margin-bottom: 20px;
-  text-align: center;
+.manage-tours-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 26px;
 }
 
-/* Form Styles */
-.form-container {
-  background-color: white;
+.manage-tours-eyebrow {
+  display: inline-block;
+  margin-bottom: 8px;
+  color: #b17a38;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.manage-tours-header h1 {
+  margin: 0;
+  color: #173f47;
+  font-size: clamp(1.8rem, 4vw, 2.35rem);
+  line-height: 1.2;
+}
+
+.manage-tours-header p {
+  margin: 8px 0 0;
+  color: #68777b;
+  font-size: 0.95rem;
+}
+
+.manage-tours-form {
+  display: grid;
+  grid-template-columns: minmax(180px, 0.8fr) minmax(240px, 1.5fr) auto;
+  align-items: stretch;
+  gap: 12px;
+  margin-bottom: 34px;
   padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin-bottom: 30px;
+  border: 1px solid #e3eae8;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(24, 55, 60, 0.06);
 }
 
-.form-container input,
-.form-container textarea {
+.manage-tours-form input,
+.manage-tours-form textarea {
   width: 100%;
-  padding: 12px;
-  margin-bottom: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 1rem;
+  min-width: 0;
+  padding: 12px 14px;
+  border: 1px solid #dce5e3;
+  border-radius: 9px;
+  background: #fbfcfb;
+  color: #202c31;
+  font: inherit;
+  font-size: 0.9rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
 
-.form-container textarea {
-  min-height: 150px;
+.manage-tours-form textarea {
+  min-height: 46px;
+  resize: vertical;
 }
 
-.form-container button {
-  background-color: #4CAF50;
-  color: white;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 4px;
+.manage-tours-form input:focus,
+.manage-tours-form textarea:focus {
+  border-color: #1a7080;
+  outline: none;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(26, 112, 128, 0.12);
+}
+
+.manage-tours-add {
+  align-self: stretch;
+  padding: 0 20px;
+  border: 0;
+  border-radius: 9px;
+  background: #0d4f5c;
+  color: #fff;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 700;
+  white-space: nowrap;
   cursor: pointer;
-  font-size: 1rem;
-  width: 100%;
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.form-container button:hover {
-  background-color: #45a049;
+.manage-tours-add:hover {
+  transform: translateY(-1px);
+  background: #1a7080;
+  box-shadow: 0 5px 14px rgba(13, 79, 92, 0.2);
 }
 
-/* Tour List Styles */
-.tour-list {
-  list-style-type: none;
+.manage-tours-list-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.manage-tours-list-header h2 {
+  margin: 0;
+  color: #202c31;
+  font-size: 1.25rem;
+}
+
+.manage-tours-list-header span {
+  padding: 5px 11px;
+  border-radius: 999px;
+  background: #e8f5f8;
+  color: #0d4f5c;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.manage-tours-list {
+  display: grid;
+  gap: 12px;
+  margin: 0;
   padding: 0;
+  list-style: none;
 }
 
-.tour-list li {
-  background-color: white;
-  padding: 15px;
-  margin-bottom: 10px;
+.manage-tour-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 20px 22px;
+  border: 1px solid #e6ecea;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 4px 16px rgba(24, 55, 60, 0.045);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.manage-tour-card:hover {
+  transform: translateY(-2px);
+  border-color: #c7dcda;
+  box-shadow: 0 9px 24px rgba(24, 55, 60, 0.09);
+}
+
+.manage-tour-info {
+  min-width: 0;
+}
+
+.manage-tour-info h3 {
+  margin: 0 0 6px;
+  color: #173f47;
+  font-family: var(--font-serif, Georgia, serif);
+  font-size: 1.1rem;
+}
+
+.manage-tour-info p {
+  margin: 0;
+  color: #68777b;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+}
+
+.manage-tour-actions {
+  display: flex;
+  flex: 0 0 auto;
+  gap: 8px;
+}
+
+.manage-tour-actions button {
+  padding: 8px 13px;
+  border: 1px solid transparent;
   border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.tour-list h3 {
-  font-size: 1.5rem;
-  color: #333;
-}
-
-.tour-list p {
-  font-size: 1rem;
-  color: #555;
-}
-
-.tour-list button {
-  background-color: #f44336;
-  color: white;
-  padding: 8px 15px;
-  border: none;
-  border-radius: 4px;
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 700;
   cursor: pointer;
-  margin-right: 10px;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
 
-.tour-list button:hover {
-  background-color: #e53935;
+.manage-tour-edit {
+  border-color: #d6e9ed;
+  background: #eff8fa;
+  color: #0d6270;
 }
 
-.edit-button {
-  background-color: #2196F3;
+.manage-tour-edit:hover {
+  border-color: #b5d9df;
+  background: #dff1f4;
 }
 
-.edit-button:hover {
-  background-color: #1976D2;
+.manage-tour-delete {
+  border-color: #f3d6d3;
+  background: #fff5f4;
+  color: #b53f36;
+}
+
+.manage-tour-delete:hover {
+  border-color: #eabcb7;
+  background: #fde9e7;
+}
+
+@media (max-width: 760px) {
+  .manage-tours-form {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .manage-tours-form textarea {
+    min-height: 90px;
+  }
+
+  .manage-tours-add {
+    min-height: 44px;
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 520px) {
+  .manage-tours-form {
+    grid-template-columns: 1fr;
+    padding: 16px;
+  }
+
+  .manage-tours-add {
+    grid-column: auto;
+  }
+
+  .manage-tour-card {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 16px;
+    padding: 17px;
+  }
+
+  .manage-tour-actions {
+    width: 100%;
+  }
+
+  .manage-tour-actions button {
+    flex: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .manage-tours-form input,
+  .manage-tours-form textarea,
+  .manage-tours-add,
+  .manage-tour-card,
+  .manage-tour-actions button {
+    transition: none;
+  }
+
+  .manage-tours-add:hover,
+  .manage-tour-card:hover {
+    transform: none;
+  }
 }
