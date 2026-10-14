@@ -272,7 +272,7 @@ export default function Home() {
             <span className="section-label">Who We Are</span>
             <h2 className="section-title">Sri Lanka's Most<br />Trusted Travel Partner</h2>
             <p className="about-strip__desc">
-              Vibe Ceylon Tours is a destination management company built on one promise —
+              Sere Lanka Tours is a destination management company built on one promise —
               to show you Sri Lanka as it truly is. Every itinerary is hand-crafted, every
               hotel selected with care, and every journey guided by our passionate local team.
             </p>
@@ -534,8 +534,8 @@ export default function Home() {
           </div>
           <div className="testimonials-grid">
             {[
-              { name: 'Sarah & James', country: 'United Kingdom', stars: 5, text: 'Absolutely unforgettable. The team arranged everything perfectly — from the Sigiriya sunrise to whale watching at Mirissa. We\'ve already recommended Vibe Ceylon to all our friends.' },
-              { name: 'Thomas Müller', country: 'Germany', stars: 5, text: 'The 8-day cultural tour exceeded every expectation. Our guide was exceptional — knowledgeable, warm, and always going the extra mile. Sri Lanka is breathtaking and Vibe Ceylon made it magical.' },
+              { name: 'Sarah & James', country: 'United Kingdom', stars: 5, text: 'Absolutely unforgettable. The team arranged everything perfectly — from the Sigiriya sunrise to whale watching at Mirissa. We\'ve already recommended Sere Lanka Tours to all our friends.' },
+              { name: 'Thomas Müller', country: 'Germany', stars: 5, text: 'The 8-day cultural tour exceeded every expectation. Our guide was exceptional — knowledgeable, warm, and always going the extra mile. Sri Lanka is breathtaking and Sere Lanka Tours made it magical.' },
               { name: 'Akiko Tanaka', country: 'Japan', stars: 5, text: 'We were nervous about planning a trip to Sri Lanka, but the team made everything seamless. The hill country train ride and Ella Rock hike were the highlights of our year.' },
             ].map((t, i) => (
               <div key={i} className="testimonial-card reveal" style={{ transitionDelay: `${i * 110}ms` }}>
@@ -565,7 +565,7 @@ export default function Home() {
           <div className="cta-banner__btns">
             <a href="/contact" className="btn-accent cta-banner__btn">Start Planning</a>
             <a
-              href="https://wa.me/94768511264?text=Hi%2C%20I%27m%20interested%20in%20a%20Sri%20Lanka%20tour%20from%20Vibe%20Ceylon%20Tours!"
+              href="https://wa.me/94787019695?text=Hi%2C%20I%27m%20interested%20in%20a%20Sri%20Lanka%20tour%20from%20Sere%20Lanka%20Tours!"
               target="_blank"
               rel="noreferrer"
               className="btn-ghost cta-banner__btn"
@@ -582,8 +582,8 @@ export default function Home() {
         <div className="footer__top section-wrapper">
           <div className="footer__brand">
             <div className="footer__logo">
-              <div className="footer__logo-mark">V</div>
-              <span className="footer__logo-name">Vibe Ceylon Tours</span>
+              <img src="/Images/logo.png" alt="Sere Lanka Tours" className="footer__logo-image" />
+              <span className="footer__logo-name">Sere Lanka Tours</span>
             </div>
             <p className="footer__tagline">Experience Sri Lanka like never before — with expert care, personal touch and authentic adventures.</p>
             <div className="footer__socials">
@@ -593,7 +593,7 @@ export default function Home() {
               <a href="#" aria-label="Instagram" className="footer__social">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
               </a>
-              <a href="https://wa.me/94768511264" aria-label="WhatsApp" className="footer__social" target="_blank" rel="noreferrer">
+              <a href="https://wa.me/94787019695" aria-label="WhatsApp" className="footer__social" target="_blank" rel="noreferrer">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
               </a>
             </div>
@@ -624,7 +624,7 @@ export default function Home() {
               </div>
               <div className="footer__contact-item">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                <a href="mailto:info@vibeceylontours.com">info@vibeceylontours.com</a>
+                <a href="mailto:info@serelankatours.com">info@serelankatours.com</a>
               </div>
             </div>
           </div>
@@ -638,7 +638,7 @@ export default function Home() {
         </div>
 
         <div className="footer__bottom">
-          <p>© 2025 Vibe Ceylon Tours. All rights reserved.</p>
+          <p>© 2025 Sere Lanka Tours. All rights reserved.</p>
           <div className="footer__legal">
             <a href="#">Privacy Policy</a>
             <span aria-hidden="true">·</span>
@@ -649,7 +649,7 @@ export default function Home() {
 
       {/* ── WHATSAPP FLOAT ── */}
       <a
-        href="https://wa.me/94768511264?text=Hi%2C%20I%27m%20interested%20in%20a%20Sri%20Lanka%20tour!"
+        href="https://wa.me/94787019695?text=Hi%2C%20I%27m%20interested%20in%20a%20Sri%20Lanka%20tour!"
         target="_blank"
         rel="noreferrer"
         className="wa-float"
