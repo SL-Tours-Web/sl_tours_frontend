@@ -1,1 +1,1 @@
-# Vibe Ceylon Tours - Frontend
+# Sere Lanka Tours - Frontend
