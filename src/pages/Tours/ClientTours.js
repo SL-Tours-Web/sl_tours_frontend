@@ -85,11 +85,14 @@ export default function ClientTours() {
                   className="card-image"
                 />
                 <div className="card-overlay"></div>
+                <span className="card-category-label">Tour category</span>
               </div>
 
               <div className="card-content">
                 <h3 className="category-name">{category.name}</h3>
-                <p className="category-description">{category.description}</p>
+                <p className="category-description">
+                  {category.description || "Discover curated tours and experiences in this category."}
+                </p>
                 <div className="card-footer">
                   <button className="btn-explore">
                     Explore Packages →

@@ -53,7 +53,7 @@
   max-width: 1240px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
   gap: var(--space-4);
   padding: var(--space-6) var(--space-4);
 }
@@ -86,12 +86,14 @@
 .card-image-container {
   position: relative;
   width: 100%;
-  height: 260px;
+  flex: 0 0 190px;
+  height: 190px;
   overflow: hidden;
   background: var(--teal-pale);
 }
 
 .card-image {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -101,14 +103,31 @@
 .card-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(13,79,92,0.15);
+  background: linear-gradient(180deg, rgba(13,79,92,0.04) 30%, rgba(13,79,92,0.58) 100%);
   transition: opacity 0.3s var(--ease);
-  opacity: 0.05;
+  opacity: 0.8;
+}
+
+.card-category-label {
+  position: absolute;
+  left: 20px;
+  bottom: 16px;
+  z-index: 1;
+  padding: 6px 12px;
+  border: 1px solid rgba(255,255,255,0.55);
+  border-radius: var(--radius-full);
+  background: rgba(13,79,92,0.42);
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  backdrop-filter: blur(8px);
 }
 
 /* Card Content */
 .card-content {
-  padding: var(--space-4) var(--space-3);
+  padding: 24px 26px 26px;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -120,17 +139,21 @@
   font-size: 1.35rem;
   font-weight: 700;
   color: var(--text-dark);
-  margin-bottom: var(--space-1);
+  margin-bottom: 8px;
   transition: color 0.25s var(--ease);
   line-height: 1.25;
 }
 
 .category-description {
-  font-size: 0.88rem;
+  font-size: 0.86rem;
   color: var(--text-light);
-  line-height: 1.7;
-  margin-bottom: var(--space-3);
+  line-height: 1.6;
+  margin-bottom: 20px;
   flex: 1;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
 }
 
 /* Card Footer */
@@ -183,7 +206,10 @@
     gap: var(--space-3);
     padding: var(--space-4) var(--space-3);
   }
-  .card-image-container { height: 220px; }
+  .card-image-container {
+    flex-basis: 170px;
+    height: 170px;
+  }
   .category-name { font-size: 1.2rem; }
 }
 
